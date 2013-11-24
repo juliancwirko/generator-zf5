@@ -1,0 +1,6 @@
+{
+  "name": "zf5",
+  "dependencies": {
+    "foundation": "zurb/bower-foundation"
+  }
+}

@@ -1,0 +1,28 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= ProjectName %></title>
+    <link rel="stylesheet" href="<%= CommonDirName %>/css/app.css">
+    <link rel="stylesheet" href="<%= ProjectName %>_template/css/<%= ProjectName %>.css">
+    <link rel="stylesheet" href="<%= ProjectName %>_template/css/<%= ProjectName %>_override.css">
+    <!-- build:js <%= CommonDirName %>/js/vendor/modernizr.js -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+  </head>
+  <body>
+
+    <div class="test">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, eligendi, aliquid, minus quaerat ab doloribus eaque minima
+    </div>
+    
+    <!-- build:js <%= CommonDirName %>/js/vendor/jquery.min.js -->
+    <script src="bower_components/jquery/jquery.min.js"></script>
+    <!-- endbuild -->
+    <!-- build:js <%= CommonDirName %>/js/foundation/foundation.min.js -->
+    <script src="bower_components/foundation/js/foundation.min.js"></script>
+    <!-- endbuild -->
+    <script src="<%= ProjectName %>_template/js/<%= ProjectName %>.js"></script>
+  </body>
+</html>
