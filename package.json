@@ -1,6 +1,6 @@
 {
   "name": "generator-zf5",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Zurb Foundation 5 generator for Yeoman",
   "keywords": [
     "yeoman-generator", "foundation5", "zurb", "foundation"

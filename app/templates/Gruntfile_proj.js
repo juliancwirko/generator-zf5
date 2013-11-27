@@ -11,7 +11,8 @@ module.exports = function(grunt) {
           outputStyle: 'extended'
         },
         files: {
-          'css/app.css': 'scss/app.scss'
+          '<%= CommonDirName %>/css/app.css': '<%= CommonDirName %>/scss/app.scss',
+          '<%= ProjectName %>_template/css/<%= ProjectName %>.css': '<%= ProjectName %>_template/scss/<%= ProjectName %>.scss'
         }        
       }
     },
@@ -26,9 +27,10 @@ module.exports = function(grunt) {
       dist: {
         files: [
           {expand: true, src: ['*.html'], dest: 'dist/', filter: 'isFile'},
-          {expand: true, src: ['js/**', 'css/**', 'images/**', '!scss/**'], dest: 'dist/'},
-          {expand: true, flatten: true, src: ['bower_components/jquery/jquery.min.js', 'bower_components/modernizr/modernizr.js'], dest: 'dist/js/vendor/', filter: 'isFile'},
-          {expand: true, flatten: true, src: ['bower_components/foundation/js/foundation.min.js'], dest: 'dist/js/foundation/', filter: 'isFile'}
+          {expand: true, src: ['<%= CommonDirName %>/**', '!<%= CommonDirName %>/scss/**'], dest: 'dist/'},
+          {expand: true, src: ['<%= ProjectName %>_template/**', '!<%= ProjectName %>_template/scss/**'], dest: 'dist/'},
+          {expand: true, flatten: true, src: ['bower_components/jquery/jquery.min.js', 'bower_components/modernizr/modernizr.js'], dest: 'dist/shared/js/vendor/', filter: 'isFile'},
+          {expand: true, flatten: true, src: ['bower_components/foundation/js/foundation.min.js'], dest: 'dist/shared/js/foundation/', filter: 'isFile'}
         ]
       },
     },
@@ -42,7 +44,7 @@ module.exports = function(grunt) {
 
     usemin: {
       html: ['dist/*.html'],
-      css: ['dist/css/*.css'],
+      css: ['dist/<%= ProjectName %>_template/css/*.css', 'dist/<%= CommonDirName %>/css/*.css'],
       options: {
         dirs: ['dist']
       }

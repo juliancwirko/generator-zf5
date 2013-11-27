@@ -1,4 +1,4 @@
-# generator-zf5 [![Build Status](https://secure.travis-ci.org/juliancwirko/generator-zf5.png?branch=master)](https://travis-ci.org/juliancwirko/generator-zf5)
+# generator-zf5
 
 Zurb Foundation 5 generator for [Yeoman](http://yeoman.io).
 
@@ -33,6 +33,21 @@ Finally, initiate the generator:
 
 ```
 $ yo zf5
+```
+
+Grunt tasks:
+
+..for compiling files
+```
+$ grunt build
+```
+..for watching
+```
+$ grunt
+```
+..for publishing project (dist directory)
+```
+$ grunt publish
 ```
 
 ### Getting To Know Yeoman
