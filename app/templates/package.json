@@ -1,6 +1,6 @@
 {
   "name": "zf5",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "devDependencies": {
     "node-sass": "~0.7.0",
     "grunt": "~0.4.1",

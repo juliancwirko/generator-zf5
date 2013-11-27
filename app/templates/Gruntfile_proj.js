@@ -29,8 +29,8 @@ module.exports = function(grunt) {
           {expand: true, src: ['*.html'], dest: 'dist/', filter: 'isFile'},
           {expand: true, src: ['<%= CommonDirName %>/**', '!<%= CommonDirName %>/scss/**'], dest: 'dist/'},
           {expand: true, src: ['<%= ProjectName %>_template/**', '!<%= ProjectName %>_template/scss/**'], dest: 'dist/'},
-          {expand: true, flatten: true, src: ['bower_components/jquery/jquery.min.js', 'bower_components/modernizr/modernizr.js'], dest: 'dist/<%= ProjectName %>/js/vendor/', filter: 'isFile'},
-          {expand: true, flatten: true, src: ['bower_components/foundation/js/foundation.min.js'], dest: 'dist/<%= ProjectName %>/js/foundation/', filter: 'isFile'}
+          {expand: true, flatten: true, src: ['bower_components/jquery/jquery.min.js', 'bower_components/modernizr/modernizr.js'], dest: 'dist/<%= CommonDirName %>/js/vendor/', filter: 'isFile'},
+          {expand: true, flatten: true, src: ['bower_components/foundation/js/foundation.min.js'], dest: 'dist/<%= CommonDirName %>/js/foundation/', filter: 'isFile'}
         ]
       },
     },
