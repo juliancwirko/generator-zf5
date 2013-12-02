@@ -25,7 +25,7 @@ Zf5Generator.prototype.askForTypeOfProject = function askForTypeOfProject() {
   var prompts = {
     type: 'confirm',
     name: 'ProjectOrNot',
-    message: 'Do You want project template folder?',
+    message: 'Do You want separated template folder?',
     default: true
   };
 
