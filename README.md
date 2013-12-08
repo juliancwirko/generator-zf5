@@ -37,6 +37,10 @@ $ yo zf5
 
 Grunt tasks:
 
+..for validating javascript
+```
+$ grunt validate-js
+```
 ..for compiling files
 ```
 $ grunt build

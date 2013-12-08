@@ -69,6 +69,7 @@ Zf5Generator.prototype.app = function app() {
 
   if (this.ProjectOrNot) {
     this.template('Gruntfile_proj.js', 'Gruntfile.js');
+    this.copy('.jshintrc', '.jshintrc');
     this.template('index_proj.html', 'index.html');
     this.mkdir(this.CommonDirName);
     this.mkdir(this.CommonDirName+'/images');
@@ -89,6 +90,7 @@ Zf5Generator.prototype.app = function app() {
   }
   else {
     this.copy('Gruntfile.js', 'Gruntfile.js');
+    this.copy('.jshintrc', '.jshintrc');
     this.copy('index.html', 'index.html');
     this.mkdir('images');
     this.mkdir('js');
