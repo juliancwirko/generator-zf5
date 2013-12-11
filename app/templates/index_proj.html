@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= ProjectName %></title>
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<%= CommonDirName %>/css/app.css">
     <link rel="stylesheet" href="<%= ProjectName %>_template/css/<%= ProjectName %>.css">
     <link rel="stylesheet" href="<%= ProjectName %>_template/css/<%= ProjectName %>_override.css">
@@ -15,9 +16,25 @@
   <body>
 
     <div class="row">
-      <div class="small-12 small-centered medium-8 medium-centered large-6 large-centered columns panel">
+      <div class="small-12 small-centered medium-10 medium-centered large-8 large-centered columns panel radius">
         <h1>Yo Foundation 5!</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, eligendi, aliquid, minus quaerat ab doloribus eaque minima</p>
+        <ul>
+          <li>Sass compiling</li>
+          <li>Publishing to dist directory</li>
+          <li>LiveReload (with Chrome Extension)</li>
+          <li>JSHint</li>
+          <li>Font Awesome (CDN for now)</li>
+        </ul>
+        <h1>Grunt tasks:</h1>
+        <ul>
+          <li>'grunt' - watching for changes (Sass, LiveReload)</li>
+          <li>'grunt build' - Sass</li>
+          <li>'grunt validate-js' - JSHint</li>
+          <li>'grunt publish' - dist directory</li>
+        </ul>
+        <h2 class="text-right">
+          <a href="https://github.com/juliancwirko/generator-zf5"><i class="fa fa-github"></i></a>
+        </h2>
       </div>
     </div>
     

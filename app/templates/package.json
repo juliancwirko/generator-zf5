@@ -1,7 +1,7 @@
 {
   "name": "zf5",
   "description": "Yeoman generator for Zurb Foundation 5",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "homepage": "https://github.com/juliancwirko/generator-zf5",
   "author": {
     "name": "Julian Ćwirko",
