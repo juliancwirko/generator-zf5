@@ -88,7 +88,13 @@ module.exports = function(grunt) {
 			sass: {
 				files: '**/*.scss',
 				tasks: ['sass']
-			}
+			},
+			livereload: {
+				files: ['*.html', '<%= CommonDirName %>/js/**/*.js', '<%= ProjectName %>_template/js/**/*.js', '<%= CommonDirName %>/css/**/*.css', '<%= ProjectName %>_template/css/**/*.css', '<%= CommonDirName %>/images/**', '<%= ProjectName %>_template/images/**'],
+				options: {
+					livereload: true
+				}
+			},
 		}
 
 	});

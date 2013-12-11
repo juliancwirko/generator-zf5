@@ -45,7 +45,7 @@ $ grunt validate-js
 ```
 $ grunt build
 ```
-..for watching
+..for watching (now with LiveReload)
 ```
 $ grunt
 ```
@@ -53,6 +53,8 @@ $ grunt
 ```
 $ grunt publish
 ```
+
+For LiveReload just install LiveReload Extension for Chrome, set permissions and restart browser. Call 'grunt' (watching) command and activate LiveReload in Chrome browser.
 
 ### Getting To Know Yeoman
 
