@@ -1,6 +1,7 @@
 {
   "name": "zf5",
   "dependencies": {
-    "foundation": "zurb/bower-foundation"
+    "foundation": "zurb/bower-foundation" <% if (fontAwesome) { %> ,
+    "font-awesome": "~4.0.3" <% } %>
   }
 }

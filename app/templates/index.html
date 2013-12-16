@@ -5,7 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foundation project</title>
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <% if (fontAwesome) { %><!-- build:css css/font-awesome.min.css -->
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- endbuild --><% } %>
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/app_override.css">
     <!-- build:js js/vendor/modernizr.js -->
@@ -22,7 +24,7 @@
           <li>Publishing to dist directory</li>
           <li>LiveReload (with Chrome Extension)</li>
           <li>JSHint</li>
-          <li>Font Awesome (CDN for now)</li>
+          <li>Font Awesome (option)</li>
         </ul>
         <h1>Grunt tasks:</h1>
         <ul>
@@ -32,7 +34,7 @@
           <li>'grunt publish' - dist directory</li>
         </ul>
         <h2 class="text-right">
-          <a href="https://github.com/juliancwirko/generator-zf5"><i class="fa fa-github"></i></a>
+          <a href="https://github.com/juliancwirko/generator-zf5"><% if (fontAwesome) { %><i class="fa fa-github"></i><% } else { %>github<% } %></a>
         </h2>
       </div>
     </div>

@@ -43,7 +43,7 @@ module.exports = function(grunt) {
 					filter: 'isFile'
 				}, {
 					expand: true,
-					src: ['js/**', 'css/**', 'images/**', '!scss/**'],
+					src: ['js/**', 'css/**', 'images/**', 'fonts/**', '!scss/**'],
 					dest: 'dist/'
 				}, {
 					expand: true,
@@ -57,7 +57,20 @@ module.exports = function(grunt) {
 					src: ['bower_components/foundation/js/foundation.min.js'],
 					dest: 'dist/js/foundation/',
 					filter: 'isFile'
-				}]
+				}<% if (fontAwesome) { %> , {
+					expand: true,
+					flatten: true,
+					src: ['bower_components/font-awesome/fonts/**'],
+					dest: 'dist/fonts/',
+					filter: 'isFile'
+				},
+				{
+					expand: true,
+					flatten: true,
+					src: ['bower_components/font-awesome/css/font-awesome.min.css'],
+					dest: 'dist/css/',
+					filter: 'isFile'
+				}<% } %>]
 			},
 		},
 
@@ -85,7 +98,7 @@ module.exports = function(grunt) {
 				tasks: ['sass']
 			},
 			livereload: {
-				files: ['*.html', 'js/**/*.js', 'css/**/*.css', 'images/**'],
+				files: ['*.html', 'js/**/*.js', 'css/**/*.css', 'fonts/**', 'images/**'],
 				options: {
 					livereload: true
 				}

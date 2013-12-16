@@ -16,11 +16,28 @@ yeoman.generators.Base.apply(this, arguments);
 
 util.inherits(Zf5Generator, yeoman.generators.Base);
 
-Zf5Generator.prototype.askForTypeOfProject = function askForTypeOfProject() {
+Zf5Generator.prototype.askForFontAwesome = function askForFontAwesome() {
   var cb = this.async();
 
   // have Yeoman greet the user.
   console.log(this.yeoman);
+
+  var prompts = {
+    type: 'confirm',
+    name: 'fontAwesome',
+    message: 'Would you like to include Font Awesome? (Font Awesome gives you scalable vector icons..)',
+    default: true
+  };
+
+  this.prompt(prompts, function (props) {
+    this.fontAwesome = props.fontAwesome;
+
+    cb();
+  }.bind(this));
+}
+
+Zf5Generator.prototype.askForTypeOfProject = function askForTypeOfProject() {
+  var cb = this.async();
 
   var prompts = {
     type: 'confirm',
@@ -64,7 +81,7 @@ Zf5Generator.prototype.askForProjectDirs = function askForProjectDirs() {
 
 Zf5Generator.prototype.app = function app() {
     this.mkdir('dist');
-    this.copy('bower.json', 'bower.json');
+    this.template('bower.json', 'bower.json');
     this.copy('package.json', 'package.json');
 
   if (this.ProjectOrNot) {
@@ -72,11 +89,13 @@ Zf5Generator.prototype.app = function app() {
     this.copy('.jshintrc', '.jshintrc');
     this.template('index_proj.html', 'index.html');
     this.mkdir(this.CommonDirName);
+    this.mkdir(this.CommonDirName+'/fonts');
     this.mkdir(this.CommonDirName+'/images');
     this.mkdir(this.CommonDirName+'/js');
     this.mkdir(this.CommonDirName+'/css');
     this.mkdir(this.CommonDirName+'/scss');
     this.mkdir(this.ProjectName+'_template');
+    this.mkdir(this.ProjectName+'_template/fonts');
     this.mkdir(this.ProjectName+'_template/images');
     this.mkdir(this.ProjectName+'_template/css');
     this.mkdir(this.ProjectName+'_template/js');
@@ -91,7 +110,8 @@ Zf5Generator.prototype.app = function app() {
   else {
     this.copy('Gruntfile.js', 'Gruntfile.js');
     this.copy('.jshintrc', '.jshintrc');
-    this.copy('index.html', 'index.html');
+    this.template('index.html', 'index.html');
+    this.mkdir('fonts');
     this.mkdir('images');
     this.mkdir('js');
     this.mkdir('css');

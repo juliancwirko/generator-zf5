@@ -62,7 +62,20 @@ module.exports = function(grunt) {
 					src: ['bower_components/foundation/js/foundation.min.js'],
 					dest: 'dist/<%= CommonDirName %>/js/foundation/',
 					filter: 'isFile'
-				}]
+				}<% if (fontAwesome) { %> , {
+					expand: true,
+					flatten: true,
+					src: ['bower_components/font-awesome/fonts/**'],
+					dest: 'dist/<%= CommonDirName %>/fonts/',
+					filter: 'isFile'
+				},
+				{
+					expand: true,
+					flatten: true,
+					src: ['bower_components/font-awesome/css/font-awesome.min.css'],
+					dest: 'dist/<%= CommonDirName %>/css/',
+					filter: 'isFile'
+				}<% } %>]
 			},
 		},
 
@@ -90,7 +103,7 @@ module.exports = function(grunt) {
 				tasks: ['sass']
 			},
 			livereload: {
-				files: ['*.html', '<%= CommonDirName %>/js/**/*.js', '<%= ProjectName %>_template/js/**/*.js', '<%= CommonDirName %>/css/**/*.css', '<%= ProjectName %>_template/css/**/*.css', '<%= CommonDirName %>/images/**', '<%= ProjectName %>_template/images/**'],
+				files: ['*.html', '<%= CommonDirName %>/js/**/*.js', '<%= ProjectName %>_template/js/**/*.js', '<%= CommonDirName %>/css/**/*.css', '<%= ProjectName %>_template/css/**/*.css', '<%= CommonDirName %>/images/**', '<%= ProjectName %>_template/images/**', '<%= CommonDirName %>/fonts/**', '<%= ProjectName %>_template/fonts/**'],
 				options: {
 					livereload: true
 				}
