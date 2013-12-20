@@ -1,20 +1,20 @@
 {
-  "name": "zf5",
-  "description": "Yeoman generator for Zurb Foundation 5",
-  "version": "0.3.2",
-  "homepage": "https://github.com/juliancwirko/generator-zf5",
+  "name": "zf5_project",
+  "description": "",
+  "version": "0.0.1",
+  "homepage": "",
   "author": {
-    "name": "Julian Ćwirko",
-    "email": "julian.cwirko@gmail.com"
+    "name": "",
+    "email": ""
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/juliancwirko/generator-zf5.git"
+    "url": ""
   },
   "devDependencies": {
     "node-sass": "~0.7.0",
     "grunt": "~0.4.2",
-    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-watch": "git://github.com/gruntjs/grunt-contrib-watch",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-jshint": "~0.7.2",

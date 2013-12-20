@@ -13,7 +13,7 @@ module.exports = function(grunt) {
 					outputStyle: 'extended'
 				},
 				files: {
-					'css/app.css': 'scss/app.scss'
+					'app/css/app.css': 'app/scss/app.scss'
 				}
 			}
 		},
@@ -24,7 +24,7 @@ module.exports = function(grunt) {
 			},
 			all: [
 				'Gruntfile.js',
-				'js/{,*/}*.js'
+				'app/js/{,*/}*.js'
 			]
 		},
 
@@ -38,12 +38,12 @@ module.exports = function(grunt) {
 			dist: {
 				files: [{
 					expand: true,
-					src: ['*.html'],
+					src: ['app/*.html'],
 					dest: 'dist/',
 					filter: 'isFile'
 				}, {
 					expand: true,
-					src: ['js/**', 'css/**', 'images/**', 'fonts/**', '!scss/**'],
+					src: ['app/js/**', 'app/css/**', 'app/images/**', 'app/fonts/**', '!app/scss/**'],
 					dest: 'dist/'
 				}, {
 					expand: true,
@@ -75,7 +75,7 @@ module.exports = function(grunt) {
 		},
 
 		useminPrepare: {
-			html: '*.html',
+			html: 'app/*.html',
 			options: {
 				dest: 'dist'
 			}
@@ -94,15 +94,15 @@ module.exports = function(grunt) {
 				files: ['Gruntfile.js']
 			},
 			sass: {
-				files: '**/*.scss',
+				files: 'app/scss/{,*/}*.scss',
 				tasks: ['sass']
 			},
 			livereload: {
-				files: ['*.html', 'js/**/*.js', 'css/**/*.css', 'fonts/**', 'images/**'],
+				files: ['app/*.html', 'app/js/{,*/}*.js', 'app/css/{,*/}*.css', 'app/images/{,*/}*.{jpg,gif,svg,jpeg,png}'],
 				options: {
 					livereload: true
 				}
-			},
+			}
 		}
 
 	});

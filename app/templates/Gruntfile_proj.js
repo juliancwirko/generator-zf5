@@ -13,8 +13,8 @@ module.exports = function(grunt) {
 					outputStyle: 'extended'
 				},
 				files: {
-					'<%= CommonDirName %>/css/app.css': '<%= CommonDirName %>/scss/app.scss',
-					'<%= ProjectName %>_template/css/<%= ProjectName %>.css': '<%= ProjectName %>_template/scss/<%= ProjectName %>.scss'
+					'app/<%= CommonDirName %>/css/app.css': 'app/<%= CommonDirName %>/scss/app.scss',
+					'app/<%= ProjectName %>_template/css/<%= ProjectName %>.css': 'app/<%= ProjectName %>_template/scss/<%= ProjectName %>.scss'
 				}
 			}
 		},
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
 			},
 			all: [
 				'Gruntfile.js',
-				'<%= ProjectName %>_template/js/{,*/}*.js'
+				'app/<%= ProjectName %>_template/js/{,*/}*.js'
 			]
 		},
 
@@ -39,16 +39,16 @@ module.exports = function(grunt) {
 			dist: {
 				files: [{
 					expand: true,
-					src: ['*.html'],
+					src: ['app/*.html'],
 					dest: 'dist/',
 					filter: 'isFile'
 				}, {
 					expand: true,
-					src: ['<%= CommonDirName %>/**', '!<%= CommonDirName %>/scss/**'],
+					src: ['app/<%= CommonDirName %>/**', '!app/<%= CommonDirName %>/scss/**'],
 					dest: 'dist/'
 				}, {
 					expand: true,
-					src: ['<%= ProjectName %>_template/**', '!<%= ProjectName %>_template/scss/**'],
+					src: ['app/<%= ProjectName %>_template/**', '!app/<%= ProjectName %>_template/scss/**'],
 					dest: 'dist/'
 				}, {
 					expand: true,
@@ -80,7 +80,7 @@ module.exports = function(grunt) {
 		},
 
 		useminPrepare: {
-			html: '*.html',
+			html: 'app/*.html',
 			options: {
 				dest: 'dist'
 			}
@@ -99,15 +99,15 @@ module.exports = function(grunt) {
 				files: ['Gruntfile.js']
 			},
 			sass: {
-				files: '**/*.scss',
+				files: ['app/<%= CommonDirName %>/scss/{,*/}*.scss', 'app/<%= ProjectName %>_template/scss/{,*/}*.scss'],
 				tasks: ['sass']
 			},
 			livereload: {
-				files: ['*.html', '<%= CommonDirName %>/js/**/*.js', '<%= ProjectName %>_template/js/**/*.js', '<%= CommonDirName %>/css/**/*.css', '<%= ProjectName %>_template/css/**/*.css', '<%= CommonDirName %>/images/**', '<%= ProjectName %>_template/images/**', '<%= CommonDirName %>/fonts/**', '<%= ProjectName %>_template/fonts/**'],
+				files: ['app/*.html', 'app/<%= CommonDirName %>/js/{,*/}*.js', 'app/<%= ProjectName %>_template/js/{,*/}*.js', 'app/<%= CommonDirName %>/css/{,*/}*.css', 'app/<%= ProjectName %>_template/css/{,*/}*.css', 'app/<%= CommonDirName %>/images/{,*/}*.{jpg,gif,svg,jpeg,png}', 'app/<%= ProjectName %>_template/images/{,*/}*.{jpg,gif,svg,jpeg,png}'],
 				options: {
 					livereload: true
 				}
-			},
+			}
 		}
 
 	});

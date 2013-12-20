@@ -81,44 +81,45 @@ Zf5Generator.prototype.askForProjectDirs = function askForProjectDirs() {
 
 Zf5Generator.prototype.app = function app() {
     this.mkdir('dist');
+    this.mkdir('app');
     this.template('bower.json', 'bower.json');
     this.copy('package.json', 'package.json');
 
   if (this.ProjectOrNot) {
     this.template('Gruntfile_proj.js', 'Gruntfile.js');
     this.copy('.jshintrc', '.jshintrc');
-    this.template('index_proj.html', 'index.html');
-    this.mkdir(this.CommonDirName);
-    this.mkdir(this.CommonDirName+'/fonts');
-    this.mkdir(this.CommonDirName+'/images');
-    this.mkdir(this.CommonDirName+'/js');
-    this.mkdir(this.CommonDirName+'/css');
-    this.mkdir(this.CommonDirName+'/scss');
-    this.mkdir(this.ProjectName+'_template');
-    this.mkdir(this.ProjectName+'_template/fonts');
-    this.mkdir(this.ProjectName+'_template/images');
-    this.mkdir(this.ProjectName+'_template/css');
-    this.mkdir(this.ProjectName+'_template/js');
-    this.mkdir(this.ProjectName+'_template/scss');
-    this.copy('scss/app.scss', this.CommonDirName+'/scss/app.scss');
-    this.copy('scss/_settings.scss', this.CommonDirName+'/scss/_settings.scss');
-    this.copy('scss/_template_settings.scss', this.ProjectName+'_template/scss/_'+this.ProjectName+'_settings.scss');
-    this.template('js/template.js', this.ProjectName+'_template/js/'+this.ProjectName+'.js');
-    this.template('scss/template.scss', this.ProjectName+'_template/scss/'+this.ProjectName+'.scss');
-    this.copy('css/template_override.css', this.ProjectName+'_template/css/'+this.ProjectName+'_override.css');
+    this.template('index_proj.html', 'app/index.html');
+    this.mkdir('app/'+this.CommonDirName);
+    this.mkdir('app/'+this.CommonDirName+'/fonts');
+    this.mkdir('app/'+this.CommonDirName+'/images');
+    this.mkdir('app/'+this.CommonDirName+'/js');
+    this.mkdir('app/'+this.CommonDirName+'/css');
+    this.mkdir('app/'+this.CommonDirName+'/scss');
+    this.mkdir('app/'+this.ProjectName+'_template');
+    this.mkdir('app/'+this.ProjectName+'_template/fonts');
+    this.mkdir('app/'+this.ProjectName+'_template/images');
+    this.mkdir('app/'+this.ProjectName+'_template/css');
+    this.mkdir('app/'+this.ProjectName+'_template/js');
+    this.mkdir('app/'+this.ProjectName+'_template/scss');
+    this.copy('scss/app.scss', 'app/'+this.CommonDirName+'/scss/app.scss');
+    this.copy('scss/_settings.scss', 'app/'+this.CommonDirName+'/scss/_settings.scss');
+    this.copy('scss/_template_settings.scss', 'app/'+this.ProjectName+'_template/scss/_'+this.ProjectName+'_settings.scss');
+    this.template('js/template.js', 'app/'+this.ProjectName+'_template/js/'+this.ProjectName+'.js');
+    this.template('scss/template.scss', 'app/'+this.ProjectName+'_template/scss/'+this.ProjectName+'.scss');
+    this.copy('css/template_override.css', 'app/'+this.ProjectName+'_template/css/'+this.ProjectName+'_override.css');
   }
   else {
     this.copy('Gruntfile.js', 'Gruntfile.js');
     this.copy('.jshintrc', '.jshintrc');
-    this.template('index.html', 'index.html');
-    this.mkdir('fonts');
-    this.mkdir('images');
-    this.mkdir('js');
-    this.mkdir('css');
-    this.mkdir('scss');
-    this.copy('scss/app.scss', 'scss/app.scss');
-    this.copy('scss/_settings.scss', 'scss/_settings.scss');
-    this.copy('js/app.js', 'js/app.js');
-    this.copy('css/template_override.css', 'css/app_override.css');
+    this.template('index.html', 'app/index.html');
+    this.mkdir('app/fonts');
+    this.mkdir('app/images');
+    this.mkdir('app/js');
+    this.mkdir('app/css');
+    this.mkdir('app/scss');
+    this.copy('scss/app.scss', 'app/scss/app.scss');
+    this.copy('scss/_settings.scss', 'app/scss/_settings.scss');
+    this.copy('js/app.js', 'app/js/app.js');
+    this.copy('css/template_override.css', 'app/css/app_override.css');
   }
 };
