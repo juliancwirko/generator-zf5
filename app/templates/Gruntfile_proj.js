@@ -39,17 +39,20 @@ module.exports = function(grunt) {
 			dist: {
 				files: [{
 					expand: true,
-					src: ['app/*.html'],
+					cwd:'app/',
+					src: ['*.html'],
 					dest: 'dist/',
 					filter: 'isFile'
 				}, {
 					expand: true,
-					src: ['app/<%= CommonDirName %>/**', '!app/<%= CommonDirName %>/scss/**'],
-					dest: 'dist/'
+					cwd:'app/<%= CommonDirName %>',
+					src: ['css/**', 'js/**', 'images/**', 'fonts/**', '!**/*.scss'],
+					dest: 'dist/<%= CommonDirName %>'
 				}, {
 					expand: true,
-					src: ['app/<%= ProjectName %>_template/**', '!app/<%= ProjectName %>_template/scss/**'],
-					dest: 'dist/'
+					cwd:'app/<%= ProjectName %>_template',
+					src: ['css/**', 'js/**', 'images/**', 'fonts/**', '!**/*.scss'],
+					dest: 'dist/<%= ProjectName %>_template'
 				}, {
 					expand: true,
 					flatten: true,
