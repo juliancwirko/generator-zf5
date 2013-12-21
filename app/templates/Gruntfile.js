@@ -11,35 +11,88 @@ module.exports = function(grunt) {
 			dist: {
 				options: {
 					outputStyle: 'extended'
-				},
+				},<% if (projectTemplate) { %>
+				files: {
+					'app/<%= CommonDirName %>/css/app.css': 'app/<%= CommonDirName %>/scss/app.scss',
+					'app/<%= ProjectName %>_template/css/<%= ProjectName %>.css': 'app/<%= ProjectName %>_template/scss/<%= ProjectName %>.scss'
+				}<% } else { %>
 				files: {
 					'app/css/app.css': 'app/scss/app.scss'
-				}
+				}<% } %>
 			}
 		},
 
 		jshint: {
 			options: {
 				jshintrc: '.jshintrc'
-			},
+			},<% if (projectTemplate) { %>
+			all: [
+				'Gruntfile.js',
+				'app/<%= ProjectName %>_template/js/{,*/}*.js'
+			]<% } else { %>
 			all: [
 				'Gruntfile.js',
 				'app/js/{,*/}*.js'
-			]
+			]<% } %>
 		},
 
 		clean: {
 			dist: {
 				src: ['dist/*']
 			},
-		},
-
+		},<% if (projectTemplate) { %>
 		copy: {
 			dist: {
 				files: [{
 					expand: true,
 					cwd:'app/',
-					src: ['css/**', 'js/**', 'images/**', 'fonts/**', '*.html', '!**/*.scss'],
+					src: ['**/*.html'],
+					dest: 'dist/',
+					filter: 'isFile'
+				}, {
+					expand: true,
+					cwd:'app/<%= CommonDirName %>',
+					src: ['css/**', 'js/**', 'images/**', 'fonts/**', '!**/*.scss'],
+					dest: 'dist/<%= CommonDirName %>'
+				}, {
+					expand: true,
+					cwd:'app/<%= ProjectName %>_template',
+					src: ['css/**', 'js/**', 'images/**', 'fonts/**', '!**/*.scss'],
+					dest: 'dist/<%= ProjectName %>_template'
+				}, {
+					expand: true,
+					flatten: true,
+					src: ['bower_components/jquery/jquery.min.js', 'bower_components/modernizr/modernizr.js'],
+					dest: 'dist/<%= CommonDirName %>/js/vendor/',
+					filter: 'isFile'
+				}, {
+					expand: true,
+					flatten: true,
+					src: ['bower_components/foundation/js/foundation.min.js'],
+					dest: 'dist/<%= CommonDirName %>/js/foundation/',
+					filter: 'isFile'
+				}<% if (fontAwesome) { %> , {
+					expand: true,
+					flatten: true,
+					src: ['bower_components/font-awesome/fonts/**'],
+					dest: 'dist/<%= CommonDirName %>/fonts/',
+					filter: 'isFile'
+				},
+				{
+					expand: true,
+					flatten: true,
+					src: ['bower_components/font-awesome/css/font-awesome.min.css'],
+					dest: 'dist/<%= CommonDirName %>/css/',
+					filter: 'isFile'
+				}<% } %>]
+			},
+		},<% } else { %>
+		copy: {
+			dist: {
+				files: [{
+					expand: true,
+					cwd:'app/',
+					src: ['css/**', 'js/**', 'images/**', 'fonts/**', '**/*.html', '!**/*.scss'],
 					dest: 'dist/'
 				}, {
 					expand: true,
@@ -68,7 +121,7 @@ module.exports = function(grunt) {
 					filter: 'isFile'
 				}<% } %>]
 			},
-		},
+		},<% } %>
 
 		useminPrepare: {
 			html: 'app/*.html',
@@ -78,8 +131,9 @@ module.exports = function(grunt) {
 		},
 
 		usemin: {
-			html: ['dist/*.html'],
-			css: ['dist/css/*.css'],
+			html: ['dist/*.html'],<% if (projectTemplate) { %>
+			css: ['dist/<%= ProjectName %>_template/css/*.css', 'dist/<%= CommonDirName %>/css/*.css'],<% } else { %>
+			css: ['dist/css/*.css'],<% } %>
 			options: {
 				dirs: ['dist']
 			}
@@ -89,12 +143,14 @@ module.exports = function(grunt) {
 			grunt: {
 				files: ['Gruntfile.js']
 			},
-			sass: {
-				files: 'app/scss/{,*/}*.scss',
+			sass: {<% if (projectTemplate) { %>
+				files: ['app/<%= CommonDirName %>/scss/{,*/}*.scss', 'app/<%= ProjectName %>_template/scss/{,*/}*.scss'],<% } else { %>
+				files: 'app/scss/{,*/}*.scss',<% } %>
 				tasks: ['sass']
 			},
-			livereload: {
-				files: ['app/*.html', 'app/js/{,*/}*.js', 'app/css/{,*/}*.css', 'app/images/{,*/}*.{jpg,gif,svg,jpeg,png}'],
+			livereload: {<% if (projectTemplate) { %>
+				files: ['app/*.html', 'app/<%= CommonDirName %>/js/{,*/}*.js', 'app/<%= ProjectName %>_template/js/{,*/}*.js', 'app/<%= CommonDirName %>/css/{,*/}*.css', 'app/<%= ProjectName %>_template/css/{,*/}*.css', 'app/<%= CommonDirName %>/images/{,*/}*.{jpg,gif,svg,jpeg,png}', 'app/<%= ProjectName %>_template/images/{,*/}*.{jpg,gif,svg,jpeg,png}'],<% } else { %>
+				files: ['app/*.html', 'app/js/{,*/}*.js', 'app/css/{,*/}*.css', 'app/images/{,*/}*.{jpg,gif,svg,jpeg,png}'],<% } %>
 				options: {
 					livereload: true
 				}

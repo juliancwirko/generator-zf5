@@ -41,20 +41,20 @@ Zf5Generator.prototype.askForTypeOfProject = function askForTypeOfProject() {
 
   var prompts = {
     type: 'confirm',
-    name: 'ProjectOrNot',
+    name: 'projectTemplate',
     message: 'Do you want a separate template folder?',
     default: true
   };
 
   this.prompt(prompts, function (props) {
-    this.ProjectOrNot = props.ProjectOrNot;
+    this.projectTemplate = props.projectTemplate;
 
     cb();
   }.bind(this));
 };
 
 Zf5Generator.prototype.askForProjectDirs = function askForProjectDirs() {
-  if (this.ProjectOrNot) {
+  if (this.projectTemplate) {
     var cb = this.async();
 
     var prompts = [{
@@ -84,11 +84,11 @@ Zf5Generator.prototype.app = function app() {
     this.mkdir('app');
     this.template('bower.json', 'bower.json');
     this.copy('package.json', 'package.json');
-
-  if (this.ProjectOrNot) {
-    this.template('Gruntfile_proj.js', 'Gruntfile.js');
+    this.template('Gruntfile.js', 'Gruntfile.js');
     this.copy('.jshintrc', '.jshintrc');
-    this.template('index_proj.html', 'app/index.html');
+    this.template('index.html', 'app/index.html');
+
+  if (this.projectTemplate) {
     this.mkdir('app/'+this.CommonDirName);
     this.mkdir('app/'+this.CommonDirName+'/fonts');
     this.mkdir('app/'+this.CommonDirName+'/images');
@@ -109,9 +109,6 @@ Zf5Generator.prototype.app = function app() {
     this.copy('css/template_override.css', 'app/'+this.ProjectName+'_template/css/'+this.ProjectName+'_override.css');
   }
   else {
-    this.copy('Gruntfile.js', 'Gruntfile.js');
-    this.copy('.jshintrc', '.jshintrc');
-    this.template('index.html', 'app/index.html');
     this.mkdir('app/fonts');
     this.mkdir('app/images');
     this.mkdir('app/js');

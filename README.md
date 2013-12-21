@@ -1,6 +1,8 @@
 # generator-zf5
 
-Zurb Foundation 5 generator for [Yeoman](http://yeoman.io).
+[Yeoman](http://yeoman.io) generator for Zurb Foundation 5.
+
+[![NPM](https://nodei.co/npm/generator-zf5.png?downloads=true)](https://nodei.co/npm/generator-zf5/)
 
 ## Yo Foundation 5!
 * Sass compiling

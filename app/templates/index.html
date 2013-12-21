@@ -4,7 +4,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foundation project</title>
+    <% if (projectTemplate) { %><title><%= ProjectName %></title>
+    <% if (fontAwesome) { %><!-- build:css <%= CommonDirName %>/css/font-awesome.min.css -->
+    <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- endbuild --><% } %>
+    <link rel="stylesheet" href="<%= CommonDirName %>/css/app.css">
+    <link rel="stylesheet" href="<%= ProjectName %>_template/css/<%= ProjectName %>.css">
+    <link rel="stylesheet" href="<%= ProjectName %>_template/css/<%= ProjectName %>_override.css">
+    <!-- build:js <%= CommonDirName %>/js/vendor/modernizr.js -->
+    <script src="../bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild --><% } else { %><title>Foundation project</title>
     <% if (fontAwesome) { %><!-- build:css css/font-awesome.min.css -->
     <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
     <!-- endbuild --><% } %>
@@ -12,7 +21,7 @@
     <link rel="stylesheet" href="css/app_override.css">
     <!-- build:js js/vendor/modernizr.js -->
     <script src="../bower_components/modernizr/modernizr.js"></script>
-    <!-- endbuild -->
+    <!-- endbuild --><% } %>
   </head>
   <body>
 
@@ -39,12 +48,19 @@
       </div>
     </div>
     
-    <!-- build:js js/vendor/jquery.min.js -->
+    <% if (projectTemplate) { %><!-- build:js <%= CommonDirName %>/js/vendor/jquery.min.js -->
+    <script src="../bower_components/jquery/jquery.min.js"></script>
+    <!-- endbuild -->
+    <!-- build:js <%= CommonDirName %>/js/foundation/foundation.min.js -->
+    <script src="../bower_components/foundation/js/foundation.min.js"></script>
+    <!-- endbuild -->
+    <script src="<%= ProjectName %>_template/js/<%= ProjectName %>.js"></script><% } else { %><!-- build:js js/vendor/jquery.min.js -->
     <script src="../bower_components/jquery/jquery.min.js"></script>
     <!-- endbuild -->
     <!-- build:js js/foundation/foundation.min.js -->
     <script src="../bower_components/foundation/js/foundation.min.js"></script>
     <!-- endbuild -->
-    <script src="js/app.js"></script>
+    <script src="js/app.js"></script><% } %>
+
   </body>
 </html>
