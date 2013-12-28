@@ -86,6 +86,7 @@ Zf5Generator.prototype.app = function app() {
     this.copy('package.json', 'package.json');
     this.template('Gruntfile.js', 'Gruntfile.js');
     this.copy('.jshintrc', '.jshintrc');
+    this.copy('.bowerrc', '.bowerrc');
     this.template('index.html', 'app/index.html');
 
   if (this.projectTemplate) {

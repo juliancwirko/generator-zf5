@@ -1,6 +1,6 @@
 {
   "name": "generator-zf5",
-  "version": "0.3.5",
+  "version": "0.4.0",
   "description": "Yeoman generator for Zurb Foundation 5",
   "keywords": [
     "yeoman-generator", "foundation5", "zurb", "foundation"
@@ -21,10 +21,10 @@
     "test": "mocha"
   },
   "dependencies": {
-    "yeoman-generator": "~0.14.0"
+    "yeoman-generator": "~0.15.0"
   },
   "devDependencies": {
-    "mocha": "~1.15.1"
+    "mocha": ">=1.16.2"
   },
   "peerDependencies": {
     "yo": ">=1.0.0"

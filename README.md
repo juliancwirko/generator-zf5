@@ -7,7 +7,7 @@
 ## Yo Foundation 5!
 * Sass compiling
 * Publishing to dist directory
-* LiveReload (with browser extension)
+* Server with LiveReload (127.0.0.1:9000)
 * JSHint
 * Font Awesome (option)
 
@@ -39,7 +39,7 @@ $ grunt validate-js
 ```
 $ grunt build
 ```
-..for watching (now with LiveReload)
+..for watching (Sass, Server on 127.0.0.1:9000 with LiveReload)
 ```
 $ grunt
 ```
@@ -47,8 +47,12 @@ $ grunt
 ```
 $ grunt publish
 ```
+..for dist directory preview (server on 127.0.0.1:9001)
+```
+$ grunt server-dist
+```
 
-For LiveReload just install LiveReload Extension for Chrome, set permissions and restart browser. Call 'grunt' (watching) command and activate LiveReload in Chrome browser.
+For LiveReload call 'grunt' (watching) command and go to http://127.0.0.1:9000.
 
 ### Getting To Know Yeoman
 
