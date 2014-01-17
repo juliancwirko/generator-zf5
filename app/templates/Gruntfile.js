@@ -62,16 +62,10 @@ module.exports = function(grunt) {
 				}, {
 					expand: true,
 					flatten: true,
-					src: ['app/bower_components/jquery/jquery.min.js', 'app/bower_components/modernizr/modernizr.js'],
+					src: ['app/bower_components/jquery/jquery.min.js', 'app/bower_components/modernizr/modernizr.js', 'app/bower_components/foundation/js/foundation.min.js'],
 					dest: 'dist/<%= CommonDirName %>/js/vendor/',
 					filter: 'isFile'
-				}, {
-					expand: true,
-					flatten: true,
-					src: ['app/bower_components/foundation/js/foundation.min.js'],
-					dest: 'dist/<%= CommonDirName %>/js/foundation/',
-					filter: 'isFile'
-				}<% if (fontAwesome) { %> , {
+				}, <% if (fontAwesome) { %> , {
 					expand: true,
 					flatten: true,
 					src: ['app/bower_components/font-awesome/fonts/**'],
