@@ -28,11 +28,12 @@ module.exports = function(grunt) {
 			},<% if (projectTemplate) { %>
 			all: [
 				'Gruntfile.js',
-				'app/<%= ProjectName %>_template/js/{,*/}*.js'
+				'app/<%= ProjectName %>_template/js/**/*.js',
+				'app/<%= CommonDirName %>/js/**/*.js'
 			]<% } else { %>
 			all: [
 				'Gruntfile.js',
-				'app/js/{,*/}*.js'
+				'app/js/**/*.js'
 			]<% } %>
 		},
 
@@ -52,39 +53,20 @@ module.exports = function(grunt) {
 				}, {
 					expand: true,
 					cwd:'app/<%= CommonDirName %>',
-					src: ['css/**', 'js/**', 'images/**', 'fonts/**', '!**/*.scss'],
+					src: ['images/**', 'fonts/**', '!**/*.scss'],
 					dest: 'dist/<%= CommonDirName %>'
 				}, {
 					expand: true,
 					cwd:'app/<%= ProjectName %>_template',
-					src: ['css/**', 'js/**', 'images/**', 'fonts/**', '!**/*.scss'],
+					src: ['images/**', 'fonts/**', '!**/*.scss'],
 					dest: 'dist/<%= ProjectName %>_template'
-				}, {
-					expand: true,
-					flatten: true,
-					src: ['app/bower_components/jquery/jquery.min.js', 'app/bower_components/modernizr/modernizr.js'],
-					dest: 'dist/<%= CommonDirName %>/js/vendor/',
-					filter: 'isFile'
-				}, {
-					expand: true,
-					flatten: true,
-					src: ['app/bower_components/foundation/js/foundation.min.js'],
-					dest: 'dist/<%= CommonDirName %>/js/foundation/',
-					filter: 'isFile'
 				}<% if (fontAwesome) { %> , {
 					expand: true,
 					flatten: true,
 					src: ['app/bower_components/font-awesome/fonts/**'],
 					dest: 'dist/<%= CommonDirName %>/fonts/',
 					filter: 'isFile'
-				},
-				{
-					expand: true,
-					flatten: true,
-					src: ['app/bower_components/font-awesome/css/font-awesome.min.css'],
-					dest: 'dist/<%= CommonDirName %>/css/',
-					filter: 'isFile'
-				}<% } %>]
+				} <% } %>]
 			},
 		},<% } else { %>
 		copy: {
@@ -92,48 +74,45 @@ module.exports = function(grunt) {
 				files: [{
 					expand: true,
 					cwd:'app/',
-					src: ['css/**', 'js/**', 'images/**', 'fonts/**', '**/*.html', '!**/*.scss', '!bower_components/**'],
+					src: ['images/**', 'fonts/**', '**/*.html', '!**/*.scss', '!bower_components/**'],
 					dest: 'dist/'
-				}, {
-					expand: true,
-					flatten: true,
-					src: ['app/bower_components/jquery/jquery.min.js', 'app/bower_components/modernizr/modernizr.js'],
-					dest: 'dist/js/vendor/',
-					filter: 'isFile'
-				}, {
-					expand: true,
-					flatten: true,
-					src: ['app/bower_components/foundation/js/foundation.min.js'],
-					dest: 'dist/js/foundation/',
-					filter: 'isFile'
 				}<% if (fontAwesome) { %> , {
 					expand: true,
 					flatten: true,
 					src: ['app/bower_components/font-awesome/fonts/**'],
 					dest: 'dist/fonts/',
 					filter: 'isFile'
-				},
-				{
-					expand: true,
-					flatten: true,
-					src: ['app/bower_components/font-awesome/css/font-awesome.min.css'],
-					dest: 'dist/css/',
-					filter: 'isFile'
-				}<% } %>]
+				} <% } %>]
 			},
 		},<% } %>
 
+		uncss: {
+			dist: {
+				files: {<% if (projectTemplate) { %>
+					'.tmp/concat/<%= CommonDirName %>/css/app.min.css': ['app/**/*.html', '!app/bower_components/**']<% } else { %>
+					'.tmp/concat/css/app.min.css': ['app/**/*.html', '!app/bower_components/**']<% } %>
+				}
+			}
+		},
+		
+		uglify: {
+			options: {
+				preserveComments: 'some',
+				mangle: false
+			}
+		},
+
 		useminPrepare: {
-			html: 'app/*.html',
+			html: ['app/**/*.html', '!app/bower_components/**'],
 			options: {
 				dest: 'dist'
 			}
 		},
 
 		usemin: {
-			html: ['dist/*.html'],<% if (projectTemplate) { %>
-			css: ['dist/<%= ProjectName %>_template/css/*.css', 'dist/<%= CommonDirName %>/css/*.css'],<% } else { %>
-			css: ['dist/css/*.css'],<% } %>
+			html: ['dist/**/*.html', '!app/bower_components/**'],<% if (projectTemplate) { %>
+			css: ['dist/<%= ProjectName %>_template/css/**/*.css', 'dist/<%= CommonDirName %>/css/**/*.css'],<% } else { %>
+			css: ['dist/css/**/*.css'],<% } %>
 			options: {
 				dirs: ['dist']
 			}
@@ -145,13 +124,13 @@ module.exports = function(grunt) {
 				tasks: ['sass']
 			},
 			sass: {<% if (projectTemplate) { %>
-				files: ['app/<%= CommonDirName %>/scss/{,*/}*.scss', 'app/<%= ProjectName %>_template/scss/{,*/}*.scss'],<% } else { %>
-				files: 'app/scss/{,*/}*.scss',<% } %>
+				files: ['app/<%= CommonDirName %>/scss/**/*.scss', 'app/<%= ProjectName %>_template/scss/**/*.scss'],<% } else { %>
+				files: 'app/scss/**/*.scss',<% } %>
 				tasks: ['sass']
 			},
 			livereload: {<% if (projectTemplate) { %>
-				files: ['app/*.html', 'app/<%= CommonDirName %>/js/{,*/}*.js', 'app/<%= ProjectName %>_template/js/{,*/}*.js', 'app/<%= CommonDirName %>/css/{,*/}*.css', 'app/<%= ProjectName %>_template/css/{,*/}*.css', 'app/<%= CommonDirName %>/images/{,*/}*.{jpg,gif,svg,jpeg,png}', 'app/<%= ProjectName %>_template/images/{,*/}*.{jpg,gif,svg,jpeg,png}'],<% } else { %>
-				files: ['app/*.html', 'app/js/{,*/}*.js', 'app/css/{,*/}*.css', 'app/images/{,*/}*.{jpg,gif,svg,jpeg,png}'],<% } %>
+				files: ['app/**/*.html', '!app/bower_components/**', 'app/<%= CommonDirName %>/js/**/*.js', 'app/<%= ProjectName %>_template/js/**/*.js', 'app/<%= CommonDirName %>/css/**/*.css', 'app/<%= ProjectName %>_template/css/**/*.css', 'app/<%= CommonDirName %>/images/**/*.{jpg,gif,svg,jpeg,png}', 'app/<%= ProjectName %>_template/images/**/*.{jpg,gif,svg,jpeg,png}'],<% } else { %>
+				files: ['app/**/*.html', '!app/bower_components/**', 'app/js/**/*.js', 'app/css/**/*.css', 'app/images/**/*.{jpg,gif,svg,jpeg,png}'],<% } %>
 				options: {
 					livereload: true
 				}
@@ -182,6 +161,10 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.loadNpmTasks('grunt-uncss');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-usemin');
@@ -190,6 +173,6 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', ['build', 'connect:app', 'watch']);
 	grunt.registerTask('validate-js', ['jshint']);
 	grunt.registerTask('server-dist', ['connect:dist']);
-	grunt.registerTask('publish', ['clean:dist', 'validate-js', 'useminPrepare', 'copy:dist', 'usemin']);
+	grunt.registerTask('publish', ['clean:dist', 'validate-js', 'useminPrepare', 'copy:dist', 'concat', 'uncss', 'cssmin', 'uglify', 'usemin']);
 
 };
