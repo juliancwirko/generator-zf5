@@ -54,6 +54,9 @@ $ grunt server-dist
 
 For LiveReload call 'grunt' (watching) command and go to http://127.0.0.1:9000.
 
+**(unfortunately uncss is frozen for now, need more testing, but all minification and concatenation should work well)**
+
+<s>
 All Css files included in build (..)app.min.css(..) block will be uncss'ed, example:
 ```
 <!-- build:css shared/css/app.min.css -->
@@ -61,8 +64,9 @@ All Css files included in build (..)app.min.css(..) block will be uncss'ed, exam
 	<link rel="stylesheet" href="shared/css/app.css">
 <!-- endbuild -->
 ```
+</s>
 
-You will have one app.min.css with fontawesome and foundation app.css minified, concatenated, and uncss'ed.
+You will have one app.min.css with fontawesome and foundation app.css minified, concatenated, and <s>uncss'ed.</s>
 
 Read more about [grunt-uncss](https://github.com/addyosmani/grunt-uncss) and [grunt-usemin](https://github.com/yeoman/grunt-usemin)
 
@@ -85,7 +89,7 @@ example:
 ```
 and
 ```
-<!-- build:css css/mfpopup/mfpopup.min.css -->
+<!-- build:css css/mfpopup/mfpopup.min.js -->
     <script src="js/mfpopup/mfpopup.js"></script>
     <script src="js/mfpopup/other_script.js"></script>
 <!-- endbuild -->
