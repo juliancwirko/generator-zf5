@@ -54,32 +54,12 @@ $ grunt server-dist
 
 For LiveReload call 'grunt' (watching) command and go to http://127.0.0.1:9000.
 
-**(unfortunately uncss is frozen for now, need more testing, but all minification and concatenation should work well)**
-
-<s>
-All Css files included in build (..)app.min.css(..) block will be uncss'ed, example:
-```
-<!-- build:css shared/css/app.min.css -->
-	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
-	<link rel="stylesheet" href="shared/css/app.css">
-<!-- endbuild -->
-```
-</s>
-
-You will have one app.min.css with fontawesome and foundation app.css minified, concatenated, and <s>uncss'ed.</s>
-
-Read more about [grunt-uncss](https://github.com/addyosmani/grunt-uncss) and [grunt-usemin](https://github.com/yeoman/grunt-usemin)
+Read more about [grunt-usemin](https://github.com/yeoman/grunt-usemin)
 
 ## Tips
 
+- if you want you can delete unnecessary/unused Foundation components from main app.scss (it will be lightest main Foundation css file)
 - place all your html files in the root folder (app) or you have to change assets paths (build etc.)
-- be careful with CSS files of third party plugins, place them outside the app.min.css build blocks (this file will be uncss'ed)
-example:
-```
-<!-- build:css css/mfpopup/mfpopup.min.css -->
-     <link rel="stylesheet" href="css/mfpopup/mfpopup.css">
-<!-- endbuild -->
-```
 - try to avoid situation when you have the same build blocks in two html files with different assets so (examples):
 
 ```

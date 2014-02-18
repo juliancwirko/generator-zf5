@@ -85,15 +85,6 @@ module.exports = function(grunt) {
 				} <% } %>]
 			},
 		},<% } %>
-
-		uncss: {
-			dist: {
-				files: {<% if (projectTemplate) { %>
-					'.tmp/concat/<%= CommonDirName %>/css/app.min.css': ['app/**/*.html', '!app/bower_components/**']<% } else { %>
-					'.tmp/concat/css/app.min.css': ['app/**/*.html', '!app/bower_components/**']<% } %>
-				}
-			}
-		},
 		
 		uglify: {
 			options: {
@@ -142,6 +133,7 @@ module.exports = function(grunt) {
 				options: {
 					port: 9000,
 					base: 'app/',
+					open: true,
 					livereload: true
 				}
 			},
@@ -149,6 +141,7 @@ module.exports = function(grunt) {
 				options: {
 					port: 9001,
 					base: 'dist/',
+					open: true,
 					keepalive: true,
 					livereload: false
 				}
@@ -162,7 +155,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
-	grunt.loadNpmTasks('grunt-uncss');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
