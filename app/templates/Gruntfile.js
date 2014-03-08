@@ -3,88 +3,54 @@
 module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+		app: 'app',
+		dist: 'dist',
 
 		sass: {
 			options: {
-				includePaths: ['app/bower_components/foundation/scss']
+				includePaths: ['<%%= app %>/bower_components/foundation/scss']
 			},
 			dist: {
 				options: {
 					outputStyle: 'extended'
-				},<% if (projectTemplate) { %>
+				},
 				files: {
-					'app/<%= CommonDirName %>/css/app.css': 'app/<%= CommonDirName %>/scss/app.scss',
-					'app/<%= ProjectName %>_template/css/<%= ProjectName %>.css': 'app/<%= ProjectName %>_template/scss/<%= ProjectName %>.scss'
-				}<% } else { %>
-				files: {
-					'app/css/app.css': 'app/scss/app.scss'
-				}<% } %>
+					'<%%= app %>/css/app.css': '<%%= app %>/scss/app.scss'
+				}
 			}
 		},
 
 		jshint: {
 			options: {
 				jshintrc: '.jshintrc'
-			},<% if (projectTemplate) { %>
+			},
 			all: [
 				'Gruntfile.js',
-				'app/<%= ProjectName %>_template/js/**/*.js',
-				'app/<%= CommonDirName %>/js/**/*.js'
-			]<% } else { %>
-			all: [
-				'Gruntfile.js',
-				'app/js/**/*.js'
-			]<% } %>
+				'<%%= app %>/js/**/*.js'
+			]
 		},
 
 		clean: {
 			dist: {
-				src: ['dist/*']
+				src: ['<%%= dist %>/*']
 			},
-		},<% if (projectTemplate) { %>
+		},
 		copy: {
 			dist: {
 				files: [{
 					expand: true,
-					cwd:'app/',
-					src: ['**/*.html', '!bower_components/**'],
-					dest: 'dist/',
-					filter: 'isFile'
-				}, {
-					expand: true,
-					cwd:'app/<%= CommonDirName %>',
-					src: ['images/**', 'fonts/**', '!**/*.scss'],
-					dest: 'dist/<%= CommonDirName %>'
-				}, {
-					expand: true,
-					cwd:'app/<%= ProjectName %>_template',
-					src: ['images/**', 'fonts/**', '!**/*.scss'],
-					dest: 'dist/<%= ProjectName %>_template'
-				}<% if (fontAwesome) { %> , {
-					expand: true,
-					flatten: true,
-					src: ['app/bower_components/font-awesome/fonts/**'],
-					dest: 'dist/<%= CommonDirName %>/fonts/',
-					filter: 'isFile'
-				} <% } %>]
-			},
-		},<% } else { %>
-		copy: {
-			dist: {
-				files: [{
-					expand: true,
-					cwd:'app/',
+					cwd:'<%%= app %>/',
 					src: ['images/**', 'fonts/**', '**/*.html', '!**/*.scss', '!bower_components/**'],
-					dest: 'dist/'
+					dest: '<%%= dist %>/'
 				}<% if (fontAwesome) { %> , {
 					expand: true,
 					flatten: true,
-					src: ['app/bower_components/font-awesome/fonts/**'],
-					dest: 'dist/fonts/',
+					src: ['<%%= app %>/bower_components/font-awesome/fonts/**'],
+					dest: '<%%= dist %>/fonts/',
 					filter: 'isFile'
 				} <% } %>]
 			},
-		},<% } %>
+		},
 		
 		uglify: {
 			options: {
@@ -94,18 +60,17 @@ module.exports = function(grunt) {
 		},
 
 		useminPrepare: {
-			html: ['app/**/*.html', '!app/bower_components/**'],
+			html: ['<%%= app %>/**/*.html', '!<%%= app %>/bower_components/**'],
 			options: {
-				dest: 'dist'
+				dest: '<%%= dist %>'
 			}
 		},
 
 		usemin: {
-			html: ['dist/**/*.html', '!app/bower_components/**'],<% if (projectTemplate) { %>
-			css: ['dist/<%= ProjectName %>_template/css/**/*.css', 'dist/<%= CommonDirName %>/css/**/*.css'],<% } else { %>
-			css: ['dist/css/**/*.css'],<% } %>
+			html: ['<%%= dist %>/**/*.html', '!<%%= app %>/bower_components/**'],
+			css: ['<%%= dist %>/css/**/*.css'],
 			options: {
-				dirs: ['dist']
+				dirs: ['<%%= dist %>']
 			}
 		},
 
@@ -114,14 +79,12 @@ module.exports = function(grunt) {
 				files: ['Gruntfile.js'],
 				tasks: ['sass']
 			},
-			sass: {<% if (projectTemplate) { %>
-				files: ['app/<%= CommonDirName %>/scss/**/*.scss', 'app/<%= ProjectName %>_template/scss/**/*.scss'],<% } else { %>
-				files: 'app/scss/**/*.scss',<% } %>
+			sass: {
+				files: '<%%= app %>/scss/**/*.scss',
 				tasks: ['sass']
 			},
-			livereload: {<% if (projectTemplate) { %>
-				files: ['app/**/*.html', '!app/bower_components/**', 'app/<%= CommonDirName %>/js/**/*.js', 'app/<%= ProjectName %>_template/js/**/*.js', 'app/<%= CommonDirName %>/css/**/*.css', 'app/<%= ProjectName %>_template/css/**/*.css', 'app/<%= CommonDirName %>/images/**/*.{jpg,gif,svg,jpeg,png}', 'app/<%= ProjectName %>_template/images/**/*.{jpg,gif,svg,jpeg,png}'],<% } else { %>
-				files: ['app/**/*.html', '!app/bower_components/**', 'app/js/**/*.js', 'app/css/**/*.css', 'app/images/**/*.{jpg,gif,svg,jpeg,png}'],<% } %>
+			livereload: {
+				files: ['<%%= app %>/**/*.html', '!<%%= app %>/bower_components/**', '<%%= app %>/js/**/*.js', '<%%= app %>/css/**/*.css', '<%%= app %>/images/**/*.{jpg,gif,svg,jpeg,png}'],
 				options: {
 					livereload: true
 				}
@@ -132,7 +95,7 @@ module.exports = function(grunt) {
 			app: {
 				options: {
 					port: 9000,
-					base: 'app/',
+					base: '<%%= app %>/',
 					open: true,
 					livereload: true
 				}
@@ -140,14 +103,29 @@ module.exports = function(grunt) {
 			dist: {
 				options: {
 					port: 9001,
-					base: 'dist/',
+					base: '<%%= dist %>/',
 					open: true,
 					keepalive: true,
 					livereload: false
 				}
 			}
-		}
+		},
 
+		bowerInstall: {
+			target: {
+				src: [
+					'<%%= app %>/**/*.html'
+				],
+				exclude: [
+					'modernizr',
+					'font-awesome',
+					'jquery-placeholder',
+					'jquery.cookie',
+					'foundation.css'
+				]
+			}
+		}
+		
 	});
 
 	grunt.loadNpmTasks('grunt-sass');
@@ -160,11 +138,13 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-usemin');
+	grunt.loadNpmTasks('grunt-bower-install');
 
-	grunt.registerTask('build', ['sass']);
-	grunt.registerTask('default', ['build', 'connect:app', 'watch']);
+	grunt.registerTask('compile-sass', ['sass']);
+	grunt.registerTask('bower-install', ['bowerInstall']);
+	grunt.registerTask('default', ['compile-sass', 'bower-install', 'connect:app', 'watch']);
 	grunt.registerTask('validate-js', ['jshint']);
 	grunt.registerTask('server-dist', ['connect:dist']);
-	grunt.registerTask('publish', ['clean:dist', 'validate-js', 'useminPrepare', 'copy:dist', 'concat', 'cssmin', 'uglify', 'usemin']);
+	grunt.registerTask('publish', ['compile-sass', 'clean:dist', 'validate-js', 'useminPrepare', 'copy:dist', 'concat', 'cssmin', 'uglify', 'usemin']);
 
 };

@@ -1,31 +1,23 @@
 <!doctype html>
-<!--[if IE 9]>    <html class="no-js lt-ie10" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" >
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <% if (projectTemplate) { %><title><%= ProjectName %></title>
-    <!-- build:css <%= CommonDirName %>/css/app.min.css -->
-    <% if (fontAwesome) { %>
-    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css"><% } %>
-    <link rel="stylesheet" href="<%= CommonDirName %>/css/app.css">
+    <title>Foundation project</title>
+    <!-- build:css css/libraries.min.css -->
+    <% if (fontAwesome) { %><link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css"><% } %>
+    <link rel="stylesheet" href="css/library.css">
+    <!-- bower:css -->
+    <!-- endbower -->
     <!-- endbuild -->
-    <!-- build:css <%= ProjectName %>_template/css/<%= ProjectName %>.min.css -->
-    <link rel="stylesheet" href="<%= ProjectName %>_template/css/<%= ProjectName %>.css">
-    <link rel="stylesheet" href="<%= ProjectName %>_template/css/<%= ProjectName %>_override.css">
-    <!-- endbuild -->
-    <!-- build:js <%= CommonDirName %>/js/vendor/modernizr.min.js -->
-    <script src="bower_components/modernizr/modernizr.js"></script>
-    <!-- endbuild --><% } else { %><title>Foundation project</title>
     <!-- build:css css/app.min.css -->
-    <% if (fontAwesome) { %>
-    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css"><% } %>
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/app_override.css">
     <!-- endbuild -->
     <!-- build:js js/vendor/modernizr.min.js -->
     <script src="bower_components/modernizr/modernizr.js"></script>
-    <!-- endbuild --><% } %>
+    <!-- endbuild -->
   </head>
   <body>
 
@@ -41,35 +33,25 @@
         </ul>
         <h1>Grunt tasks:</h1>
         <ul>
-          <li>'grunt' - watching (Sass, Server on 127.0.0.1:9000 with LiveReload)</li>
+          <li>'grunt' - watching (Sass, Server on 0.0.0.0:9000 with LiveReload)</li>
           <li>'grunt build' - Sass</li>
           <li>'grunt validate-js' - JSHint</li>
           <li>'grunt publish' - dist directory</li>
-          <li>'grunt server-dist' - server on 127.0.0.1:9001 - dist directory (preview only)</li>
+          <li>'grunt server-dist' - server on 0.0.0.0:9001 - dist directory (preview only)</li>
         </ul>
         <h2 class="text-right">
           <a href="https://github.com/juliancwirko/generator-zf5"><% if (fontAwesome) { %><i class="fa fa-github"></i><% } else { %>github<% } %></a>
         </h2>
       </div>
     </div>
-    
-    <% if (projectTemplate) { %><!-- build:js <%= CommonDirName %>/js/vendor/jquery.min.js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
+
+    <!-- build:js js/vendor/libraries.min.js -->
+    <!-- bower:js -->
+    <!-- endbower -->
     <!-- endbuild -->
-    <!-- build:js <%= CommonDirName %>/js/foundation/foundation.min.js -->
-    <script src="bower_components/foundation/js/foundation.js"></script>
-    <!-- endbuild -->
-    <!-- build:js <%= ProjectName %>_template/js/<%= ProjectName %>.min.js -->
-    <script src="<%= ProjectName %>_template/js/<%= ProjectName %>.js"></script>
-    <!-- endbuild --><% } else { %>
-    <!-- build:js js/vendor/jquery.min.js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <!-- endbuild -->
-    <!-- build:js js/foundation/foundation.min.js -->
-    <script src="bower_components/foundation/js/foundation.js"></script>
-    <!-- endbuild -->
+
     <!-- build:js js/app.min.js -->
     <script src="js/app.js"></script>
-    <!-- endbuild --><% } %>
+    <!-- endbuild -->
   </body>
 </html>

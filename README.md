@@ -7,7 +7,8 @@
 ## Yo Foundation 5!
 * Sass compiling
 * Publishing to dist directory
-* Server with LiveReload (127.0.0.1:9000)
+* Server with LiveReload (0.0.0.0:9000)
+* Bower install
 * JSHint
 * Font Awesome (option)
 
@@ -35,11 +36,15 @@ Grunt tasks:
 ```
 $ grunt validate-js
 ```
-..for compiling files
+..for injecting bower libraries (also in default grunt task)
 ```
-$ grunt build
+$ grunt bower-install
 ```
-..for watching (Sass, Server on 127.0.0.1:9000 with LiveReload)
+..for compiling Sass files
+```
+$ grunt compile-sass
+```
+..for watching (Sass, Server on 0.0.0.0:9000 with LiveReload)
 ```
 $ grunt
 ```
@@ -47,14 +52,32 @@ $ grunt
 ```
 $ grunt publish
 ```
-..for dist directory preview (server on 127.0.0.1:9001)
+..for dist directory preview (server on 0.0.0.0:9001)
 ```
 $ grunt server-dist
 ```
 
-For LiveReload call 'grunt' (watching) command and go to http://127.0.0.1:9000.
+### LiveReload
+
+For LiveReload call 'grunt' (watching) command and go to http://0.0.0.0:9000
+
+### Usemin
 
 Read more about [grunt-usemin](https://github.com/yeoman/grunt-usemin)
+
+### Bower-install
+
+Now you can install your libraries much faster. Example: 
+```
+bower search magnific-popup
+...
+bower install magnific-popup --save
+...
+grunt bower-install
+```
+This should inject the proper js and css paths into your html files. But you should be careful and check what was injected.
+'grunt publish' will then minify and concatenate them into a clean (libraries.min.css and libraries.min.js) files.
+Instead of a 'bower install' with '--save' you can manualy edit the bower.json file and then run a 'grunt bower-install'. It is also included in the default task - 'grunt'.
 
 ## Tips
 
@@ -76,7 +99,7 @@ and
 ```
 you can add new ones
 
-- on start it is better to use standard version without template folder
+- always verify what 'grunt bower-install' injects
 
 You can test it and tell me please if something is not working.
 
@@ -95,3 +118,12 @@ Maybe someone (English speaker) would like to prepare tutorial for zf5 generator
 ### Contact
 
 [@juliancwirko](https://twitter.com/JulianCwirko) | [julian.cwirko@gmail.com](mailto:julian.cwirko@gmail.com)
+
+### Changelog
+
+#### 0.6.0 (8.03.2014)
+
+- yeoman-generator 0.16.0 cleanup [http://yeoman.io/blog/cleanup.html]
+- template folder option removed
+- grunt-bower-install added
+- Foundation 5.2 cleanup

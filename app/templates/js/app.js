@@ -1,28 +1,25 @@
-var app = (function() {
+var app = (function(document, $) {
 
 	'use strict';
-	var privateVariable = 'app fired!',
-		docElem = document.documentElement;
+	var docElem = document.documentElement,
+
+		_userAgentInit = function() {
+			docElem.setAttribute('data-useragent', navigator.userAgent);
+		},
+		_init = function() {
+			$(document).foundation();
+			_userAgentInit();
+		};
 
 	return {
-		publicFunction: function() {
-			console.log(privateVariable);
-		},
-		userAgentInit: function() {
-			docElem.setAttribute('data-useragent', navigator.userAgent);
-		}
+		init: _init
 	};
 
-})();
+})(document, jQuery);
 
 (function() {
 
 	'use strict';
-
-	//foundation init
-	$(document).foundation();
-
-	app.publicFunction();
-	app.userAgentInit();
+	app.init();
 
 })();
