@@ -8,6 +8,7 @@ var Zf5Generator = yeoman.generators.Base.extend({
 
 	init: function () {
 		this.pkg = require('../package.json');
+		this.config.save();
 
 		this.on('end', function () {
 			if (!this.options['skip-install']) {
@@ -21,6 +22,10 @@ var Zf5Generator = yeoman.generators.Base.extend({
 
 		// have Yeoman greet the user.
 		this.log(this.yeoman);
+
+		this.log(chalk.bold.blue('=================='));
+		this.log(chalk.bold.blue(' Yo Foundation 5!'));
+		this.log(chalk.bold.blue('=================='));
 
 		var prompts = {
 			type: 'confirm',

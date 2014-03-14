@@ -121,6 +121,10 @@ Maybe someone (English speaker) would like to prepare tutorial for zf5 generator
 
 ### Changelog
 
+#### 0.6.1 (14.03.2014)
+
+- Foundation 5.2.1 adjustments
+
 #### 0.6.0 (8.03.2014)
 
 - yeoman-generator 0.16.0 cleanup [http://yeoman.io/blog/cleanup.html]
