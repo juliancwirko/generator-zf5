@@ -97,7 +97,8 @@ module.exports = function(grunt) {
 					port: 9000,
 					base: '<%%= app %>/',
 					open: true,
-					livereload: true
+					livereload: true,
+					hostname: '127.0.0.1'
 				}
 			},
 			dist: {
@@ -106,7 +107,8 @@ module.exports = function(grunt) {
 					base: '<%%= dist %>/',
 					open: true,
 					keepalive: true,
-					livereload: false
+					livereload: false,
+					hostname: '127.0.0.1'
 				}
 			}
 		},
@@ -121,7 +123,7 @@ module.exports = function(grunt) {
 					'font-awesome',
 					'jquery-placeholder',
 					'jquery.cookie',
-					'foundation.css'
+					'foundation'
 				]
 			}
 		}

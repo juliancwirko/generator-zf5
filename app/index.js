@@ -61,7 +61,6 @@ var Zf5Generator = yeoman.generators.Base.extend({
 		this.copy('scss/_appstyles.scss', 'app/scss/_appstyles.scss');
 		this.copy('js/app.js', 'app/js/app.js');
 		this.copy('css/template_override.css', 'app/css/app_override.css');
-		this.copy('css/template_libraries.css', 'app/css/library.css');
 	}
 
 });

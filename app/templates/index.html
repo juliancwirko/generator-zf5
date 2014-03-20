@@ -5,9 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foundation project</title>
-    <!-- build:css css/libraries.min.css -->
-    <% if (fontAwesome) { %><link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css"><% } %>
-    <link rel="stylesheet" href="css/library.css">
+    <!-- build:css css/libraries.min.css --><% if (fontAwesome) { %>
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css"><% } %>
     <!-- bower:css -->
     <!-- endbower -->
     <!-- endbuild -->
@@ -29,15 +28,17 @@
           <li>Publishing to dist directory</li>
           <li>Server with LiveReload</li>
           <li>JSHint</li>
+          <li>Grunt Bower install</li>
           <li>Font Awesome (option)</li>
         </ul>
         <h1>Grunt tasks:</h1>
         <ul>
-          <li>'grunt' - watching (Sass, Server on 0.0.0.0:9000 with LiveReload)</li>
-          <li>'grunt build' - Sass</li>
+          <li>'grunt' - watching (Sass, Server on 127.0.0.1:9000 with LiveReload)</li>
+          <li>'grunt compile-sass' - Sass</li>
           <li>'grunt validate-js' - JSHint</li>
+          <li>'grunt bower-install' - injecting bower libraries</li>
           <li>'grunt publish' - dist directory</li>
-          <li>'grunt server-dist' - server on 0.0.0.0:9001 - dist directory (preview only)</li>
+          <li>'grunt server-dist' - server on 127.0.0.1:9001 - dist directory (preview only)</li>
         </ul>
         <h2 class="text-right">
           <a href="https://github.com/juliancwirko/generator-zf5"><% if (fontAwesome) { %><i class="fa fa-github"></i><% } else { %>github<% } %></a>
@@ -49,7 +50,25 @@
     <!-- bower:js -->
     <!-- endbower -->
     <!-- endbuild -->
-
+    <!-- build:js js/vendor/foundation.min.js -->
+    <script src="bower_components/foundation/js/foundation/foundation.js"></script>
+    <script src="bower_components/foundation/js/foundation/foundation.abide.js"></script>
+    <script src="bower_components/foundation/js/foundation/foundation.accordion.js"></script>
+    <script src="bower_components/foundation/js/foundation/foundation.alert.js"></script>
+    <script src="bower_components/foundation/js/foundation/foundation.clearing.js"></script>
+    <script src="bower_components/foundation/js/foundation/foundation.dropdown.js"></script>
+    <script src="bower_components/foundation/js/foundation/foundation.equalizer.js"></script>
+    <script src="bower_components/foundation/js/foundation/foundation.interchange.js"></script>
+    <script src="bower_components/foundation/js/foundation/foundation.joyride.js"></script>
+    <script src="bower_components/foundation/js/foundation/foundation.magellan.js"></script>
+    <script src="bower_components/foundation/js/foundation/foundation.offcanvas.js"></script>
+    <script src="bower_components/foundation/js/foundation/foundation.orbit.js"></script>
+    <script src="bower_components/foundation/js/foundation/foundation.reveal.js"></script>
+    <script src="bower_components/foundation/js/foundation/foundation.slider.js"></script>
+    <script src="bower_components/foundation/js/foundation/foundation.tab.js"></script>
+    <script src="bower_components/foundation/js/foundation/foundation.tooltip.js"></script>
+    <script src="bower_components/foundation/js/foundation/foundation.topbar.js"></script>
+    <!-- endbuild -->
     <!-- build:js js/app.min.js -->
     <script src="js/app.js"></script>
     <!-- endbuild -->

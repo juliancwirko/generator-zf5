@@ -7,7 +7,7 @@
 ## Yo Foundation 5!
 * Sass compiling
 * Publishing to dist directory
-* Server with LiveReload (0.0.0.0:9000)
+* Server with LiveReload (127.0.0.1:9000)
 * Bower install
 * JSHint
 * Font Awesome (option)
@@ -44,7 +44,7 @@ $ grunt bower-install
 ```
 $ grunt compile-sass
 ```
-..for watching (Sass, Server on 0.0.0.0:9000 with LiveReload)
+..for watching (Sass, Server on 127.0.0.1:9000 with LiveReload)
 ```
 $ grunt
 ```
@@ -52,14 +52,14 @@ $ grunt
 ```
 $ grunt publish
 ```
-..for dist directory preview (server on 0.0.0.0:9001)
+..for dist directory preview (server on 127.0.0.1:9001)
 ```
 $ grunt server-dist
 ```
 
 ### LiveReload
 
-For LiveReload call 'grunt' (watching) command and go to http://0.0.0.0:9000
+For LiveReload call 'grunt' (watching) command and go to http://127.0.0.1:9000
 
 ### Usemin
 
@@ -81,7 +81,8 @@ Instead of a 'bower install' with '--save' you can manualy edit the bower.json f
 
 ## Tips
 
-- if you have problems with connection to http://0.0.0.0:9000 change 'hostname' in Gruntfile.js 'connect' config. Just add ```hostname: '127.0.0.1'``` line to ```options: {...}```
+- if you want you can delete not used javascript components in index.html file. All remaining components will be minified and concatenated into one foundation.min.js
+- if you have problems with connection to http://127.0.0.1:9000 change 'hostname' in Gruntfile.js 'connect' config. Just add ```hostname: '[your hostname]'``` line to ```options: {...}```
 - if you want you can delete unnecessary/unused Foundation components from main app.scss (it will be lightest main Foundation css file)
 - place all your html files in the root folder (app) or you have to change assets paths (build etc.)
 - try to avoid situation when you have the same build blocks in two html files with different assets so (examples):
@@ -101,6 +102,7 @@ and
 you can add new ones
 
 - always verify what 'grunt bower-install' injects
+- You must look aut where you initialize your project. It is better to not initialize your projec in a subfolder next to .yo-rc.json because your files will land here and not in your subfolder from where you are initializing project
 
 You can test it and tell me please if something is not working.
 
@@ -121,6 +123,11 @@ Maybe someone (English speaker) would like to prepare tutorial for zf5 generator
 [@juliancwirko](https://twitter.com/JulianCwirko) | [julian.cwirko@gmail.com](mailto:julian.cwirko@gmail.com)
 
 ### Changelog
+
+#### 0.6.2 (20.03.2014)
+
+- Foundation JavaScript file - separation into components
+- 'connect' hostname - back to 127.0.0.1
 
 #### 0.6.1 (14.03.2014)
 
