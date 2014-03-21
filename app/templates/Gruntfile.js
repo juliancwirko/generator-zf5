@@ -60,7 +60,7 @@ module.exports = function(grunt) {
 		},
 
 		useminPrepare: {
-			html: ['<%%= app %>/**/*.html', '!<%%= app %>/bower_components/**'],
+			html: ['<%%= app %>/index.html'],
 			options: {
 				dest: '<%%= dist %>'
 			}
@@ -119,8 +119,8 @@ module.exports = function(grunt) {
 					'<%%= app %>/**/*.html'
 				],
 				exclude: [
-					'modernizr',
-					'font-awesome',
+					'modernizr',<% if (fontAwesome) { %>
+					'font-awesome',<% } %>
 					'jquery-placeholder',
 					'jquery.cookie',
 					'foundation'

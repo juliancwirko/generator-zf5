@@ -1,6 +1,6 @@
 # generator-zf5
 
-[Yeoman](http://yeoman.io) generator for Zurb Foundation 5.
+[Yeoman](http://yeoman.io) generator for [Zurb Foundation 5](http://foundation.zurb.com/).
 
 [![NPM](https://nodei.co/npm/generator-zf5.png?downloads=true)](https://nodei.co/npm/generator-zf5/)
 
@@ -85,6 +85,7 @@ Instead of a 'bower install' with '--save' you can manualy edit the bower.json f
 - if you have problems with connection to http://127.0.0.1:9000 change 'hostname' in Gruntfile.js 'connect' config. Just add ```hostname: '[your hostname]'``` line to ```options: {...}```
 - if you want you can delete unnecessary/unused Foundation components from main app.scss (it will be lightest main Foundation css file)
 - place all your html files in the root folder (app) or you have to change assets paths (build etc.)
+- grunt useminPrepare reference file is only index.html (prevents multiple the same operations) but all html files will be processed, so remember to keep the same usemin 'comments blocks' in all your html files (for now it is good to simply copy index.html, rename it and leave header and footer css and js inclusions with 'comments blocks')
 - try to avoid situation when you have the same build blocks in two html files with different assets so (examples):
 
 ```
@@ -123,6 +124,10 @@ Maybe someone (English speaker) would like to prepare tutorial for zf5 generator
 [@juliancwirko](https://twitter.com/JulianCwirko) | [julian.cwirko@gmail.com](mailto:julian.cwirko@gmail.com)
 
 ### Changelog
+
+#### 0.6.3 (21.03.2014)
+
+- grunt useminPrepare - based only on one file - index.html (prevents multiple the same operations if there are many html files)
 
 #### 0.6.2 (20.03.2014)
 
