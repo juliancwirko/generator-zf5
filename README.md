@@ -125,6 +125,10 @@ Maybe someone (English speaker) would like to prepare tutorial for zf5 generator
 
 ### Changelog
 
+#### 0.6.4 (04.04.2014)
+
+- Foundation 5.2.2 adjustments
+
 #### 0.6.3 (21.03.2014)
 
 - grunt useminPrepare - based only on one file - index.html (prevents multiple the same operations if there are many html files)
