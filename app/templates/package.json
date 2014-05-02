@@ -11,8 +11,10 @@
     "type": "git",
     "url": ""
   },
-  "devDependencies": {
-    "node-sass": "~0.8.4",
+  "devDependencies": {<% if (!compass) { %>
+    "node-sass": "~0.8.6",
+    "grunt-sass": "~0.12.1",<% } else { %>
+    "grunt-contrib-sass": "~0.7.3",<% } %>
     "grunt": "~0.4.4",
     "grunt-contrib-watch": "~0.6.1",
     "grunt-contrib-clean": "~0.5.0",
@@ -22,8 +24,9 @@
     "grunt-contrib-concat": "~0.4.0",
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-connect": "~0.7.1",
-    "grunt-bower-install": "~1.4.0",
-    "grunt-usemin": "~2.1.0",
-    "grunt-sass": "~0.12.1"
+    "grunt-bower-install": "~1.4.1",
+    "grunt-usemin": "~2.1.1",
+    "grunt-contrib-imagemin": "0.7.0",
+    "grunt-newer": "~0.7.0"
   }
 }

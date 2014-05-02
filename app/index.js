@@ -41,11 +41,28 @@ var Zf5Generator = yeoman.generators.Base.extend({
 		}.bind(this));
 	},
 
+	askForCompass: function () {
+		var cb = this.async();
+
+		var prompts = {
+			type: 'confirm',
+			name: 'compass',
+			message: 'Would you like to use Scss (with Compass)? (default: Scss with Libsass)',
+			default: false
+		};
+
+		this.prompt(prompts, function (props) {
+			this.compass = props.compass;
+
+			cb();
+		}.bind(this));
+	},
+
 	app: function () {
 		this.mkdir('dist');
 		this.mkdir('app');
 		this.template('bower.json', 'bower.json');
-		this.copy('package.json', 'package.json');
+		this.template('package.json', 'package.json');
 		this.template('Gruntfile.js', 'Gruntfile.js');
 		this.copy('.jshintrc', '.jshintrc');
 		this.copy('.bowerrc', '.bowerrc');

@@ -30,8 +30,23 @@ Finally, initiate the generator:
 $ yo zf5
 ```
 
-Grunt tasks:
+## Grunt tasks:
 
+```
+$ grunt (compile Sass, bower install, livereload, watch)
+```
+..for publishing project (into dist directory)
+```
+$ grunt publish (compile Sass, validate-js, copy, concatenation, minifications)
+```
+..for dist directory preview (server on 127.0.0.1:9001)
+```
+$ grunt server-dist
+```
+
+### Other Grunt tasks
+
+```
 ..for validating javascript
 ```
 $ grunt validate-js
@@ -46,16 +61,18 @@ $ grunt compile-sass
 ```
 ..for watching (Sass, Server on 127.0.0.1:9000 with LiveReload)
 ```
-$ grunt
-```
-..for publishing project (dist directory)
-```
-$ grunt publish
-```
-..for dist directory preview (server on 127.0.0.1:9001)
-```
-$ grunt server-dist
-```
+
+### Ruby Sass with Compass or Node Sass (Libsass)
+
+From version 0.7.0 you can use Ruby version of Sass with Compass. You can choose this option after 'yo zf5'. By default you will be using Node version whith is faster but there are some incompatibilities with newer Sass versions (for actual version of Foundation it is ok but if you want use new Sass capabilities you should use Ruby version). If you want to use Ruby version first of all you need to install compass by 'gem install compass' (it will install Sass gem too).
+
+You don't need to use the config.rb file, all is configured in Gruntfile.js (Sass block) If you have any problems with using Sass with Compass it is good to uninstall any of your Sass gems and Compass gems and install only Compass gem again. It will fetch proper version of Sass gem.
+
+Ruby Sass config info: <a href="https://github.com/gruntjs/grunt-contrib-sass">https://github.com/gruntjs/grunt-contrib-sass</a>
+
+Node Sass config info: <a href="https://github.com/sindresorhus/grunt-sass">https://github.com/sindresorhus/grunt-sass</a>
+
+Please test this and send issues if any.
 
 ### LiveReload
 
@@ -124,6 +141,11 @@ Maybe someone (English speaker) would like to prepare tutorial for zf5 generator
 [@juliancwirko](https://twitter.com/JulianCwirko) | [julian.cwirko@gmail.com](mailto:julian.cwirko@gmail.com)
 
 ### Changelog
+
+#### 0.7.0 (02.05.2014)
+
+- Ruby Sass with Compass as an option
+- Imagemin
 
 #### 0.6.4 (04.04.2014)
 

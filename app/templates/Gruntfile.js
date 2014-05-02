@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 		app: 'app',
 		dist: 'dist',
 
-		sass: {
+		sass: {<% if (!compass) { %>
 			options: {
 				includePaths: ['<%%= app %>/bower_components/foundation/scss']
 			},
@@ -17,7 +17,18 @@ module.exports = function(grunt) {
 				files: {
 					'<%%= app %>/css/app.css': '<%%= app %>/scss/app.scss'
 				}
-			}
+			}<% } else { %>
+			dist: {
+				options: {
+					style: 'expanded', // expanded or nested or compact or compressed
+					loadPath: '<%%= app %>/bower_components/foundation/scss',
+					compass: true,
+					quiet: true
+				},
+				files: {
+					'<%%= app %>/css/app.css': '<%%= app %>/scss/app.scss'
+				}
+			}<% } %>
 		},
 
 		jshint: {
@@ -40,7 +51,7 @@ module.exports = function(grunt) {
 				files: [{
 					expand: true,
 					cwd:'<%%= app %>/',
-					src: ['images/**', 'fonts/**', '**/*.html', '!**/*.scss', '!bower_components/**'],
+					src: ['fonts/**', '**/*.html', '!**/*.scss', '!bower_components/**'],
 					dest: '<%%= dist %>/'
 				}<% if (fontAwesome) { %> , {
 					expand: true,
@@ -50,6 +61,17 @@ module.exports = function(grunt) {
 					filter: 'isFile'
 				} <% } %>]
 			},
+		},
+
+		imagemin: {
+			target: {
+				files: [{
+					expand: true,
+					cwd: '<%%= app %>/images/',
+					src: ['**/*.{jpg,gif,svg,jpeg,png}'],
+					dest: '<%%= dist %>/images/'
+				}]
+			}
 		},
 		
 		uglify: {
@@ -130,7 +152,9 @@ module.exports = function(grunt) {
 		
 	});
 
-	grunt.loadNpmTasks('grunt-sass');
+	<% if (compass) { %>
+	grunt.loadNpmTasks('grunt-contrib-sass');<% } else { %>
+	grunt.loadNpmTasks('grunt-sass');<% } %>
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-copy');
@@ -141,12 +165,14 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-usemin');
 	grunt.loadNpmTasks('grunt-bower-install');
+	grunt.loadNpmTasks('grunt-contrib-imagemin');
+	grunt.loadNpmTasks('grunt-newer');
 
 	grunt.registerTask('compile-sass', ['sass']);
 	grunt.registerTask('bower-install', ['bowerInstall']);
 	grunt.registerTask('default', ['compile-sass', 'bower-install', 'connect:app', 'watch']);
 	grunt.registerTask('validate-js', ['jshint']);
 	grunt.registerTask('server-dist', ['connect:dist']);
-	grunt.registerTask('publish', ['compile-sass', 'clean:dist', 'validate-js', 'useminPrepare', 'copy:dist', 'concat', 'cssmin', 'uglify', 'usemin']);
+	grunt.registerTask('publish', ['compile-sass', 'clean:dist', 'validate-js', 'useminPrepare', 'copy:dist', 'newer:imagemin', 'concat', 'cssmin', 'uglify', 'usemin']);
 
 };
