@@ -142,6 +142,11 @@ Maybe someone (English speaker) would like to prepare tutorial for zf5 generator
 
 ### Changelog
 
+#### 0.7.1 (23.05.2014)
+
+- Font Awesome update
+- Deps update
+
 #### 0.7.0 (02.05.2014)
 
 - Ruby Sass with Compass as an option
