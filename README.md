@@ -142,6 +142,10 @@ Maybe someone (English speaker) would like to prepare tutorial for zf5 generator
 
 ### Changelog
 
+#### 0.7.2 (31.05.2014)
+
+- Foundation 5.2.3 adjustments
+
 #### 0.7.1 (23.05.2014)
 
 - Font Awesome update
