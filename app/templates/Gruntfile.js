@@ -31,6 +31,25 @@ module.exports = function(grunt) {
 			}<% } %>
 		},
 
+		<% if (jade) { %>
+		jade: {
+			compile: {
+				options: {
+					pretty: true,
+					data: {
+						debug: false
+					}
+				},
+				files: [{
+					expand: true,
+					cwd: '<%%= app %>/jade/',
+					src: ['**/*.jade', '!partials/**'],
+					ext: '.html',
+					dest: '<%%= app %>/'
+				}]
+			}
+		},<% } %>
+
 		jshint: {
 			options: {
 				jshintrc: '.jshintrc'
@@ -104,7 +123,11 @@ module.exports = function(grunt) {
 			sass: {
 				files: '<%%= app %>/scss/**/*.scss',
 				tasks: ['sass']
-			},
+			},<% if (jade) { %>
+			jade: {
+				files: '<%%= app %>/jade/**/*.jade',
+				tasks: ['jade']
+			},<% } %>
 			livereload: {
 				files: ['<%%= app %>/**/*.html', '!<%%= app %>/bower_components/**', '<%%= app %>/js/**/*.js', '<%%= app %>/css/**/*.css', '<%%= app %>/images/**/*.{jpg,gif,svg,jpeg,png}'],
 				options: {
@@ -138,7 +161,8 @@ module.exports = function(grunt) {
 		wiredep: {
 			target: {
 				src: [
-					'<%%= app %>/**/*.html'
+					'<%%= app %>/**/*.html',
+					'<%%= app %>/jade/**/*.jade'
 				],
 				exclude: [
 					'modernizr',<% if (fontAwesome) { %>
@@ -155,6 +179,8 @@ module.exports = function(grunt) {
 	<% if (compass) { %>
 	grunt.loadNpmTasks('grunt-contrib-sass');<% } else { %>
 	grunt.loadNpmTasks('grunt-sass');<% } %>
+	<% if (jade) { %>
+	grunt.loadNpmTasks('grunt-contrib-jade');<% } %>
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-copy');
@@ -168,11 +194,16 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-newer');
 
+	<% if (jade) { %>grunt.registerTask('compile-jade', ['jade']);<% } %>
 	grunt.registerTask('compile-sass', ['sass']);
 	grunt.registerTask('bower-install', ['wiredep']);
-	grunt.registerTask('default', ['compile-sass', 'bower-install', 'connect:app', 'watch']);
+	<% if (jade) { %>
+	grunt.registerTask('default', ['compile-jade', 'compile-sass', 'bower-install', 'connect:app', 'watch']);<% } else { %>
+	grunt.registerTask('default', ['compile-sass', 'bower-install', 'connect:app', 'watch']);<% } %>
 	grunt.registerTask('validate-js', ['jshint']);
 	grunt.registerTask('server-dist', ['connect:dist']);
-	grunt.registerTask('publish', ['compile-sass', 'clean:dist', 'validate-js', 'useminPrepare', 'copy:dist', 'newer:imagemin', 'concat', 'cssmin', 'uglify', 'usemin']);
+	<% if (jade) { %>
+	grunt.registerTask('publish', ['compile-jade', 'compile-sass', 'clean:dist', 'validate-js', 'useminPrepare', 'copy:dist', 'newer:imagemin', 'concat', 'cssmin', 'uglify', 'usemin']);<% } else { %>
+	grunt.registerTask('publish', ['compile-sass', 'clean:dist', 'validate-js', 'useminPrepare', 'copy:dist', 'newer:imagemin', 'concat', 'cssmin', 'uglify', 'usemin']);<% } %>
 
 };

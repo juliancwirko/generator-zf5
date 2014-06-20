@@ -6,6 +6,7 @@
 
 ## Yo Foundation 5!
 * Sass compiling
+* Jade templating engine (option)
 * Publishing to dist directory
 * Server with LiveReload (127.0.0.1:9000)
 * Bower install
@@ -32,12 +33,13 @@ $ yo zf5
 
 ## Grunt tasks:
 
+..runs project (into dist directory)
 ```
-$ grunt (compile Sass, bower install, livereload, watch)
+$ grunt (compile Jade, compile Sass, bower install, livereload, watch)
 ```
 ..for publishing project (into dist directory)
 ```
-$ grunt publish (compile Sass, validate-js, copy, concatenation, minifications)
+$ grunt publish (compile Jade, compile Sass, validate-js, copy, concatenation, minifications)
 ```
 ..for dist directory preview (server on 127.0.0.1:9001)
 ```
@@ -46,7 +48,6 @@ $ grunt server-dist
 
 ### Other Grunt tasks
 
-```
 ..for validating javascript
 ```
 $ grunt validate-js
@@ -59,7 +60,9 @@ $ grunt bower-install
 ```
 $ grunt compile-sass
 ```
-..for watching (Sass, Server on 127.0.0.1:9000 with LiveReload)
+..for compiling Jade files
+```
+$ grunt compile-jade
 ```
 
 ### Ruby Sass with Compass or Node Sass (Libsass)
@@ -73,6 +76,23 @@ Ruby Sass config info: <a href="https://github.com/gruntjs/grunt-contrib-sass">h
 Node Sass config info: <a href="https://github.com/sindresorhus/grunt-sass">https://github.com/sindresorhus/grunt-sass</a>
 
 Please test this and send issues if any.
+
+### Jade templating engine
+
+From version 0.8.0 you can use Jade templating engine (option). It gives you clean and simple html syntax and (whats important) it allows you to use partials includes like header or footer. Example:
+````
+html(class="no-js", lang="en")
+    include partials/header
+    body
+        div.row
+            div(class="small-12 columns panel radius")
+                h1 Yo Foundation 5!
+                h2(class="text-right")
+                    a(href="https://github.com/juliancwirko/generator-zf5")
+                        i(class="fa fa-twitter")
+        include partials/footer
+````
+More about Jade: [http://jade-lang.com/](http://jade-lang.com/)
 
 ### LiveReload
 
@@ -121,6 +141,7 @@ you can add new ones
 
 - always verify what 'grunt bower-install' injects
 - You must look aut where you initialize your project. It is better to not initialize your projec in a subfolder next to .yo-rc.json because your files will land here and not in your subfolder from where you are initializing project
+- if you use Compass.. place your mixin includes after Foundation scss partials - [more info](https://github.com/juliancwirko/generator-zf5/issues/18)
 
 You can test it and tell me please if something is not working.
 
@@ -141,6 +162,11 @@ Maybe someone (English speaker) would like to prepare tutorial for zf5 generator
 [@juliancwirko](https://twitter.com/JulianCwirko) | [julian.cwirko@gmail.com](mailto:julian.cwirko@gmail.com)
 
 ### Changelog
+
+#### 0.8.0 (--.06.2014)
+
+- Foundation 5.3 adjustments
+- Jade templating engine (option)
 
 #### 0.7.2 (31.05.2014)
 
