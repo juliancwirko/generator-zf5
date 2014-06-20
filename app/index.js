@@ -85,11 +85,9 @@ var Zf5Generator = yeoman.generators.Base.extend({
 		this.copy('.bowerrc', '.bowerrc');
 		this.copy('gitignore', '.gitignore');
 		if (this.jade) {
-			this.mkdir('app/jade');
-			this.mkdir('app/jade/partials');
-			this.template('jade/index.jade', 'app/jade/index.jade');
-			this.template('jade/partials/header.jade', 'app/jade/partials/header.jade');
-			this.copy('jade/partials/footer.jade', 'app/jade/partials/footer.jade');
+			this.template('jade/index.jade', 'app/index.jade');
+			this.template('jade/header.jade', 'app/header.jade');
+			this.copy('jade/footer.jade', 'app/footer.jade');
 		} else {
 			this.template('index.html', 'app/index.html');
 		}

@@ -42,8 +42,8 @@ module.exports = function(grunt) {
 				},
 				files: [{
 					expand: true,
-					cwd: '<%%= app %>/jade/',
-					src: ['**/*.jade', '!partials/**'],
+					cwd: '<%%= app %>/',
+					src: ['**/*.jade', '!**/header.jade', '!**/footer.jade'],
 					ext: '.html',
 					dest: '<%%= app %>/'
 				}]
@@ -125,7 +125,7 @@ module.exports = function(grunt) {
 				tasks: ['sass']
 			},<% if (jade) { %>
 			jade: {
-				files: '<%%= app %>/jade/**/*.jade',
+				files: '<%%= app %>/**/*.jade',
 				tasks: ['jade']
 			},<% } %>
 			livereload: {
@@ -160,9 +160,9 @@ module.exports = function(grunt) {
 
 		wiredep: {
 			target: {
-				src: [
-					'<%%= app %>/**/*.html',
-					'<%%= app %>/jade/**/*.jade'
+				src: [<% if (jade) { %>
+					'<%%= app %>/**/*.jade'<% } else { %>
+					'<%%= app %>/**/*.html'<% } %>
 				],
 				exclude: [
 					'modernizr',<% if (fontAwesome) { %>
