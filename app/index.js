@@ -65,7 +65,7 @@ var Zf5Generator = yeoman.generators.Base.extend({
 			type: 'confirm',
 			name: 'jade',
 			message: 'Would you like to use Jade? (templating engine)',
-			default: true
+			default: false
 		};
 
 		this.prompt(prompts, function (props) {
@@ -84,6 +84,7 @@ var Zf5Generator = yeoman.generators.Base.extend({
 		this.copy('.jshintrc', '.jshintrc');
 		this.copy('.bowerrc', '.bowerrc');
 		this.copy('gitignore', '.gitignore');
+		this.copy('README.md', 'README.md');
 		if (this.jade) {
 			this.template('jade/index.jade', 'app/index.jade');
 			this.template('jade/header.jade', 'app/header.jade');

@@ -142,6 +142,7 @@ you can add new ones
 - always verify what 'grunt bower-install' injects
 - You must look aut where you initialize your project. It is better to not initialize your projec in a subfolder next to .yo-rc.json because your files will land here and not in your subfolder from where you are initializing project
 - if you use Compass.. place your mixin includes after Foundation scss partials - [more info](https://github.com/juliancwirko/generator-zf5/issues/18)
+- if you use Jade templating remember to place at least header.jade and footer.jade in main app folder - this is needed for bower install injections
 
 You can test it and tell me please if something is not working.
 
