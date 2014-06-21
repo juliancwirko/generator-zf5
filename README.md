@@ -164,10 +164,13 @@ Maybe someone (English speaker) would like to prepare tutorial for zf5 generator
 
 ### Changelog
 
-#### 0.8.0 (--.06.2014)
+#### 0.8.0 (21.06.2014)
 
-- Foundation 5.3 adjustments
 - Jade templating engine (option)
+
+#### 0.7.3 (21.06.2014)
+
+- Foundation 5.3.0 adjustments
 
 #### 0.7.2 (31.05.2014)
 
