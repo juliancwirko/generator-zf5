@@ -118,6 +118,7 @@ Instead of a 'bower install' with '--save' you can manualy edit the bower.json f
 
 ## Tips
 
+- If you have problems with permissions in Linux run this : ````sudo chown -R `whoami` ~/.npm````
 - if you want you can delete not used javascript components in index.html file. All remaining components will be minified and concatenated into one foundation.min.js
 - if you have problems with connection to http://127.0.0.1:9000 change 'hostname' in Gruntfile.js 'connect' config. Just add ```hostname: '[your hostname]'``` line to ```options: {...}```
 - if you want you can delete unnecessary/unused Foundation components from main app.scss (it will be lightest main Foundation css file)
@@ -163,6 +164,10 @@ Maybe someone (English speaker) would like to prepare tutorial for zf5 generator
 [@juliancwirko](https://twitter.com/JulianCwirko) | [julian.cwirko@gmail.com](mailto:julian.cwirko@gmail.com)
 
 ### Changelog
+
+#### 0.8.1 (11.07.2014)
+
+- Merge pull request from chrisjlee (Remove loading of all gruntfiles; add 'load-grunt-task' dependancy)
 
 #### 0.8.0 (21.06.2014)
 

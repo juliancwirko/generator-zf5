@@ -13,7 +13,7 @@
     "url": ""
   },
   "devDependencies": {
-    "load-grunt-tasks": "^0.4.0",<% if (!compass) { %>
+    "load-grunt-tasks": "~0.6.0",<% if (!compass) { %>
     "node-sass": "~0.9.3",
     "grunt-sass": "~0.14.0",<% } else { %>
     "grunt-contrib-sass": "~0.7.3",<% } %>
@@ -28,7 +28,7 @@
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-connect": "~0.8.0",
     "grunt-wiredep": "~1.8.0",
-    "grunt-usemin": "~2.2.0",
+    "grunt-usemin": "~2.3.0",
     "grunt-contrib-imagemin": "0.7.1",
     "grunt-newer": "~0.7.0"
   }
