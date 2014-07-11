@@ -1,6 +1,10 @@
 'use strict';
 
 module.exports = function(grunt) {
+
+    require('load-grunt-tasks')(grunt);
+
+
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		app: 'app',
@@ -92,7 +96,7 @@ module.exports = function(grunt) {
 				}]
 			}
 		},
-		
+
 		uglify: {
 			options: {
 				preserveComments: 'some',
@@ -173,26 +177,8 @@ module.exports = function(grunt) {
 				]
 			}
 		}
-		
-	});
 
-	<% if (compass) { %>
-	grunt.loadNpmTasks('grunt-contrib-sass');<% } else { %>
-	grunt.loadNpmTasks('grunt-sass');<% } %>
-	<% if (jade) { %>
-	grunt.loadNpmTasks('grunt-contrib-jade');<% } %>
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-contrib-clean');
-	grunt.loadNpmTasks('grunt-contrib-copy');
-	grunt.loadNpmTasks('grunt-contrib-cssmin');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-connect');
-	grunt.loadNpmTasks('grunt-usemin');
-	grunt.loadNpmTasks('grunt-wiredep');
-	grunt.loadNpmTasks('grunt-contrib-imagemin');
-	grunt.loadNpmTasks('grunt-newer');
+	});
 
 	<% if (jade) { %>grunt.registerTask('compile-jade', ['jade']);<% } %>
 	grunt.registerTask('compile-sass', ['sass']);

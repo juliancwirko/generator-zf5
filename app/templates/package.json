@@ -12,7 +12,8 @@
     "type": "git",
     "url": ""
   },
-  "devDependencies": {<% if (!compass) { %>
+  "devDependencies": {
+    "load-grunt-tasks": "^0.4.0",<% if (!compass) { %>
     "node-sass": "~0.9.3",
     "grunt-sass": "~0.14.0",<% } else { %>
     "grunt-contrib-sass": "~0.7.3",<% } %>
