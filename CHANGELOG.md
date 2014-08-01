@@ -1,6 +1,6 @@
 #### 0.8.3 (31.07.2014)
 
-- Foundation 5.3.2 adjustments
+- Foundation 5.3.2 - 5.3.3 adjustments
 
 #### 0.8.2 (19.07.2014)
 
