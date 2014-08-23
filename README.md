@@ -67,7 +67,11 @@ $ grunt compile-jade
 
 ### Ruby Sass with Compass or Node Sass (Libsass)
 
-From version 0.7.0 you can use Ruby version of Sass with Compass. You can choose this option after 'yo zf5'. By default you will be using Node version whith is faster but there are some incompatibilities with newer Sass versions (for actual version of Foundation it is ok but if you want use new Sass capabilities you should use Ruby version). If you want to use Ruby version first of all you need to install compass by 'gem install compass' (it will install Sass gem too).
+**(Foundation seems not to work well with new Compass 1.0.1 and Ruby Sass 3.4)**
+
+- you can remove Sass and Compass (gem uninstall sass ; gem uninstall compass) and install older version of Compass (gem install compass --version 0.12.7) (it will use proper version of Sass). Or you can use Node Sass - it works.
+
+From version 0.7.0 you can use Ruby version of Sass with Compass. You can choose this option after 'yo zf5'. By default you will be using Node version which is faster but there are some incompatibilities with newer Sass versions (for actual version of Foundation it is ok but if you want use new Sass capabilities you should use Ruby version). If you want to use Ruby version first of all you need to install compass by 'gem install compass' (it will install Sass gem too).
 
 You don't need to use the config.rb file, all is configured in Gruntfile.js (Sass block) If you have any problems with using Sass with Compass it is good to uninstall any of your Sass gems and Compass gems and install only Compass gem again. It will fetch proper version of Sass gem.
 
