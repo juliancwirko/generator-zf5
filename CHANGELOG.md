@@ -1,3 +1,10 @@
+#### 0.8.5 (30.08.2014)
+
+- Foundation 5.4.3 adjustments
+- added Compass imports in _appstyles.scss
+- FontAwesome 4.2.0
+- bump deps
+
 #### 0.8.4 (23.08.2014)
 
 - Foundation 5.4.0 adjustments

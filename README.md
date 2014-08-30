@@ -73,7 +73,7 @@ $ grunt compile-jade
 
 From version 0.7.0 you can use Ruby version of Sass with Compass. You can choose this option after 'yo zf5'. By default you will be using Node version which is faster but there are some incompatibilities with newer Sass versions (for actual version of Foundation it is ok but if you want use new Sass capabilities you should use Ruby version). If you want to use Ruby version first of all you need to install compass by 'gem install compass' (it will install Sass gem too).
 
-You don't need to use the config.rb file, all is configured in Gruntfile.js (Sass block) If you have any problems with using Sass with Compass it is good to uninstall any of your Sass gems and Compass gems and install only Compass gem again. It will fetch proper version of Sass gem.
+You don't need to use the config.rb file, all is configured in Gruntfile.js (Sass block). There will be also Compass imports in _appstyles.scss (You can modify it). If you have any problems with using Sass with Compass it is good to uninstall any of your Sass gems and Compass gems and install only Compass gem again. It will fetch proper version of Sass gem.
 
 Ruby Sass config info: <a href="https://github.com/gruntjs/grunt-contrib-sass">https://github.com/gruntjs/grunt-contrib-sass</a>
 
@@ -81,7 +81,7 @@ Node Sass config info: <a href="https://github.com/sindresorhus/grunt-sass">http
 
 Please test this and send issues if any.
 
-### Jade templating engine
+### Jade templating engine (early stage.. PR are welcomed)
 
 From version 0.8.0 you can use Jade templating engine (option). It gives you clean and simple html syntax and (whats important) it allows you to use partials includes like header or footer. Example:
 ````
@@ -96,6 +96,13 @@ html(class="no-js", lang="en")
                         i(class="fa fa-twitter")
         include partials/footer
 ````
+##### Problems to solve:
+
+- jade-usemin
+- bower install (wiredep) with Jade
+- paths etc...
+- all as the Jade option in Yeoman prompts convention..
+
 More about Jade: [http://jade-lang.com/](http://jade-lang.com/)
 
 ### LiveReload
@@ -122,6 +129,7 @@ Instead of a 'bower install' with '--save' you can manualy edit the bower.json f
 
 ## Tips
 
+- Sometimes after new version is released if you have errors when running ````yo zf5```` You should run ````npm cache clean````
 - If you have problems with permissions in Linux run this : ````sudo chown -R `whoami` ~/.npm````
 - if you want you can delete not used javascript components in index.html file. All remaining components will be minified and concatenated into one foundation.min.js
 - if you have problems with connection to http://127.0.0.1:9000 change 'hostname' in Gruntfile.js 'connect' config. Just add ```hostname: '[your hostname]'``` line to ```options: {...}```
@@ -146,7 +154,7 @@ you can add new ones
 
 - always verify what 'grunt bower-install' injects
 - You must look aut where you initialize your project. It is better to not initialize your projec in a subfolder next to .yo-rc.json because your files will land here and not in your subfolder from where you are initializing project
-- if you use Compass.. place your mixin includes after Foundation scss partials - [more info](https://github.com/juliancwirko/generator-zf5/issues/18)
+- if you use Compass.. place your mixin includes after Foundation scss partials - [more info](https://github.com/juliancwirko/generator-zf5/issues/18) (by default they are in _appstyles.scss)
 - if you use Jade templating remember to place at least header.jade and footer.jade in main app folder - this is needed for bower install injections
 
 You can test it and tell me please if something is not working.
