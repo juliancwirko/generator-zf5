@@ -4,6 +4,9 @@
 
 [![NPM](https://nodei.co/npm/generator-zf5.png?downloads=true)](https://nodei.co/npm/generator-zf5/)
 
+[![NPM](https://nodei.co/npm-dl/generator-zf5.png?height=2)](https://nodei.co/npm/generator-zf5/)
+
+
 ## Yo Foundation 5!
 * Sass compiling
 * Jade templating engine (option)
