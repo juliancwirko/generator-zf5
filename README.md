@@ -4,6 +4,14 @@
 
 [![NPM](https://nodei.co/npm/generator-zf5.png?downloads=true)](https://nodei.co/npm/generator-zf5/)
 
+### Important note:
+
+"Foundation now supports Sass 3.4. Libsass does not have Sass 3.4 support right now. If you are creating a Libsass project, you can use Sass 3.2 still. If you want to dig into the code and make the needed changes, check this out: [Sass 3.4 Compatibility](https://github.com/zurb/foundation/issues/5756)" - Foundation docs.
+
+So for now (from Foundation version 5.4.4) it is better to use generator-zf5 with Ruby Sass and not Libsass. (default option changed). But if you want to use Libsass just edit functions.scss in ````bower_components/foundation/scss/foundation/_functions.scss```` (line 13 remove !global flag) like it is described under the link above. (only this one change should help).
+
+I hope future releases of Foundation will have some backward compatibility for Libsass or Libsass will work with Sass 3.4.*
+
 ## Yo Foundation 5!
 * Sass compiling
 * Jade templating engine (option)
@@ -67,9 +75,9 @@ $ grunt compile-jade
 
 ### Ruby Sass with Compass or Node Sass (Libsass)
 
-**(Foundation seems not to work well with new Compass 1.0.1 and Ruby Sass 3.4)**
+**(Foundation 5.4.4 works now with new Compass 1.0.1 and Ruby Sass 3.4)**
 
-- you can remove Sass and Compass (gem uninstall sass ; gem uninstall compass) and install older version of Compass (gem install compass --version 0.12.7) (it will use proper version of Sass). Or you can use Node Sass - it works.
+- If you want to work with Libsass read this: [Sass 3.4 Compatibility](https://github.com/zurb/foundation/issues/5756) If you need help please write to me.
 
 From version 0.7.0 you can use Ruby version of Sass with Compass. You can choose this option after 'yo zf5'. By default you will be using Node version which is faster but there are some incompatibilities with newer Sass versions (for actual version of Foundation it is ok but if you want use new Sass capabilities you should use Ruby version). If you want to use Ruby version first of all you need to install compass by 'gem install compass' (it will install Sass gem too).
 

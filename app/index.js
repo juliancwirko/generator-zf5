@@ -41,18 +41,18 @@ var Zf5Generator = yeoman.generators.Base.extend({
 		}.bind(this));
 	},
 
-	askForCompass: function () {
+	askForLibsass: function () {
 		var cb = this.async();
 
 		var prompts = {
 			type: 'confirm',
-			name: 'compass',
-			message: 'Would you like to use Scss (with Compass)? (default: Scss with Libsass)',
+			name: 'libsass',
+			message: 'Would you like to use Scss (with Libsass)? (default: Ruby Scss with Compass)',
 			default: false
 		};
 
 		this.prompt(prompts, function (props) {
-			this.compass = props.compass;
+			this.libsass = props.libsass;
 
 			cb();
 		}.bind(this));
