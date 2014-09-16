@@ -2,8 +2,6 @@
 
 [Yeoman](http://yeoman.io) generator for [Zurb Foundation 5](http://foundation.zurb.com/).
 
-[![NPM](https://nodei.co/npm/generator-zf5.png?downloads=true)](https://nodei.co/npm/generator-zf5/)
-
 ### Important note:
 
 "Foundation now supports Sass 3.4. Libsass does not have Sass 3.4 support right now. If you are creating a Libsass project, you can use Sass 3.2 still. If you want to dig into the code and make the needed changes, check this out: [Sass 3.4 Compatibility](https://github.com/zurb/foundation/issues/5756)" - Foundation docs.
@@ -11,6 +9,10 @@
 So for now (from Foundation version 5.4.4) it is better to use generator-zf5 with Ruby Sass and not Libsass. (default option changed). But if you want to use Libsass just edit functions.scss in ````bower_components/foundation/scss/foundation/_functions.scss```` (line 13 remove !global flag) like it is described under the link above. (only this one change should help).
 
 I hope future releases of Foundation will have some backward compatibility for Libsass or Libsass will work with Sass 3.4.*
+
+[![NPM](https://nodei.co/npm/generator-zf5.png?downloads=true)](https://nodei.co/npm/generator-zf5/)
+
+[![NPM](https://nodei.co/npm-dl/generator-zf5.png?height=2)](https://nodei.co/npm/generator-zf5/)
 
 ## Yo Foundation 5!
 * Sass compiling
@@ -185,4 +187,4 @@ Maybe someone (English speaker) would like to prepare tutorial for zf5 generator
 
 ### Changelog
 
-..see CHANGELOG.md file
+..see [CHANGELOG.md](https://github.com/juliancwirko/generator-zf5/blob/master/CHANGELOG.md) file
