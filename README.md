@@ -4,13 +4,9 @@
 
 ### Important note:
 
-"Foundation now supports Sass 3.4. Libsass does not have Sass 3.4 support right now. If you are creating a Libsass project, you can use Sass 3.2 still. If you want to dig into the code and make the needed changes, check this out: [Sass 3.4 Compatibility](https://github.com/zurb/foundation/issues/5756)" - Foundation docs.
+From Foundation 5.4.5 it seems we can again use Libsass (with Sass 3.2.19) without any hacks on scss files. And we still can use Ruby version (with new Sass 3.4.*).
 
-So for now (from Foundation version 5.4.4) it is better to use generator-zf5 with Ruby Sass and not Libsass. (default option changed). Remember to install it ````gem install compass```` (Sass 3.4.* will be instaled too) 
-
-But if you want to use Libsass just edit functions.scss in ````bower_components/foundation/scss/foundation/_functions.scss```` (line 13 remove !global flag) like it is described under the link above. (only this one change should help).
-
-I hope future releases of Foundation will have some backward compatibility for Libsass or Libsass will work with Sass 3.4.*
+Default option here will be Sass with Ruby (for now). But you can choose Libsass on startup.
 
 [![NPM](https://nodei.co/npm/generator-zf5.png?downloads=true)](https://nodei.co/npm/generator-zf5/)
 
@@ -45,20 +41,22 @@ $ yo zf5
 
 ## Grunt tasks:
 
-..runs project (into dist directory)
+run project
+(compile Jade, compile Sass, bower install, livereload (server on 127.0.0.1:9000), watch)
 ```
-$ grunt (compile Jade, compile Sass, bower install, livereload, watch)
+$ grunt
 ```
-..for publishing project (into dist directory)
+publishing project (into dist directory)
+(compile Jade, compile Sass, validate-js, copy, concatenation, minifications)
 ```
-$ grunt publish (compile Jade, compile Sass, validate-js, copy, concatenation, minifications)
+$ grunt publish
 ```
-..for dist directory preview (server on 127.0.0.1:9001)
+dist directory preview (server on 127.0.0.1:9001)
 ```
 $ grunt server-dist
 ```
 
-### Other Grunt tasks
+### Other Grunt tasks (if you want to use it)
 
 ..for validating javascript
 ```
@@ -79,15 +77,13 @@ $ grunt compile-jade
 
 ### Ruby Sass with Compass or Node Sass (Libsass)
 
-**(Foundation 5.4.4 works now with new Compass 1.0.1 and Ruby Sass 3.4)**
-
-- If you want to work with Libsass read this: [Sass 3.4 Compatibility](https://github.com/zurb/foundation/issues/5756) If you need help please write to me.
-
-From version 0.7.0 you can use Ruby version of Sass with Compass. You can choose this option after 'yo zf5'. By default you will be using Node version which is faster but there are some incompatibilities with newer Sass versions (for actual version of Foundation it is ok but if you want use new Sass capabilities you should use Ruby version). If you want to use Ruby version first of all you need to install compass by 'gem install compass' (it will install Sass gem too).
+From version 0.7.0 you can use Ruby version of Sass with Compass. By default you will be using this version. If you want to use Ruby version first of all you need to install compass by 'gem install compass' (it will install Sass gem too).
 
 You don't need to use the config.rb file, all is configured in Gruntfile.js (Sass block). There will be also Compass imports in _appstyles.scss (You can modify it). If you have any problems with using Sass with Compass it is good to uninstall any of your Sass gems and Compass gems and install only Compass gem again. It will fetch proper version of Sass gem.
 
 Ruby Sass config info: <a href="https://github.com/gruntjs/grunt-contrib-sass">https://github.com/gruntjs/grunt-contrib-sass</a>
+
+You can also use Libsass version which is very fast, but is compatible with only old Sass 3.2.*. For foundation it is ok. And I think soon it will be improved. You can choose it on startup.
 
 Node Sass config info: <a href="https://github.com/sindresorhus/grunt-sass">https://github.com/sindresorhus/grunt-sass</a>
 
@@ -127,7 +123,7 @@ Read more about [grunt-usemin](https://github.com/yeoman/grunt-usemin)
 
 ### Bower-install
 
-Now you can install your libraries much faster. Example: 
+Now you can install your libraries much faster. Example:
 ```
 bower search magnific-popup
 ...
