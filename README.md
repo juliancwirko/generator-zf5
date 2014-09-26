@@ -4,7 +4,10 @@
 
 ### Important note:
 
-From Foundation 5.4.5 it seems we can again use Libsass (with Sass 3.2.19) without any hacks on scss files. And we still can use Ruby version (with new Sass 3.4.*).
+From Foundation website:
+"To maintain compatibility with Sass 3.2 and libsass, we've dropped support for Sass 3.4. We recommend adding a Gemfile to your project that specifies Sass 3.3 and Compass 1.0. [Learn More...](https://github.com/zurb/foundation/issues/5811#issuecomment-56975540)"
+
+So from Foundation 5.4.5 it seems we can again use Libsass (with Sass 3.2.19) without any hacks on scss files. And we can use Ruby version (with new Sass 3.3). Remember to install proper version of Sass ````gem install sass --version 3.3````
 
 Default option here will be Sass with Ruby (for now). But you can choose Libsass on startup.
 
