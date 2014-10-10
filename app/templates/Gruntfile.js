@@ -10,7 +10,7 @@ module.exports = function(grunt) {
 		app: 'app',
 		dist: 'dist',
 
-		sass: {<% if (libsass) { %>
+		sass: {<% if (!compass) { %>
 			options: {
 				includePaths: ['<%%= app %>/bower_components/foundation/scss']
 			},

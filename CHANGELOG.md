@@ -1,3 +1,8 @@
+#### 0.9.2 (10.10.2014)
+
+- Foundation 5.4.6 adjustments
+- Revert to Libsass version as default
+
 #### 0.9.1 (26.09.2014)
 
 - Foundation 5.4.5 adjustments
