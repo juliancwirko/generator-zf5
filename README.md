@@ -6,10 +6,11 @@
 
 **Default option here will be Sass with Libsass (for now). But you can choose Ruby version on startup.**
 
-In fact for now I was able to run Ruby version with Compass only on Sass 3.2.19 and Compass 0.12.7. So you can try with other Ruby and Compass versions variations but I recommend you to use Libsass. I hope this will be clarified by Foundation 5 team soon.
+For now I was able to run Ruby version with Compass on Sass 3.4.5 and Compass 1.0.1. But not on Sass 3.4.6.
+Like always i recomend Sass with Libsass.
 
-From Foundation 5.4.6:
-"Full libsass compatability is back! We fixed the last lingering issue preventing libsass from properly compiling Foundation. Note that Sass 3.4 is still not officially supported for the time being"
+From Foundation 5.4.7:
+"Foundation is now compatible libsass 3.0. Libsass is now closer to Sass 3.3 compatibility."
 [Foundation 5 Changelog](http://foundation.zurb.com/docs/changelog.html)
 
 
@@ -82,13 +83,13 @@ $ grunt compile-jade
 
 ### Ruby Sass with Compass or Node Sass (Libsass)
 
-From version 0.7.0 you can use Ruby version of Sass with Compass. By default you will be using this version. If you want to use Ruby version first of all you need to install compass by 'gem install compass' (it will install Sass gem too).
+From version 0.7.0 you can use Ruby version of Sass with Compass. If you want to use Ruby version first of all you need to install compass by 'gem install compass' (it will install Sass gem too).
 
 You don't need to use the config.rb file, all is configured in Gruntfile.js (Sass block). There will be also Compass imports in _appstyles.scss (You can modify it). If you have any problems with using Sass with Compass it is good to uninstall any of your Sass gems and Compass gems and install only Compass gem again. It will fetch proper version of Sass gem.
 
 Ruby Sass config info: <a href="https://github.com/gruntjs/grunt-contrib-sass">https://github.com/gruntjs/grunt-contrib-sass</a>
 
-You can also use Libsass version which is very fast, but is compatible with only old Sass 3.2.*. For foundation it is ok. And I think soon it will be improved. You can choose it on startup.
+You can also use Libsass version (default) which is very fast, but it is compatible with only older Sass 3.3. For Foundation it is ok. And I think soon it will be improved.
 
 Node Sass config info: <a href="https://github.com/sindresorhus/grunt-sass">https://github.com/sindresorhus/grunt-sass</a>
 

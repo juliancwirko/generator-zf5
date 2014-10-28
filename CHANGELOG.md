@@ -1,3 +1,7 @@
+#### 0.9.2 (28.10.2014)
+- Foundation 5.4.7 adjustments
+- Foundation works with Libsass 3.0 and Compass 1.0.1 + Sass 3.4.5 (!!!)
+
 #### 0.9.2 (10.10.2014)
 
 - Foundation 5.4.6 adjustments
