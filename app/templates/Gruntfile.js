@@ -167,13 +167,6 @@ module.exports = function(grunt) {
 				src: [<% if (jade) { %>
 					'<%%= app %>/**/*.jade'<% } else { %>
 					'<%%= app %>/**/*.html'<% } %>
-				],
-				exclude: [
-					'modernizr',<% if (fontAwesome) { %>
-					'font-awesome',<% } %>
-					'jquery-placeholder',
-					'jquery.cookie',
-					'foundation'
 				]
 			}
 		}

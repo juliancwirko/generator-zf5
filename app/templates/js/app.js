@@ -8,6 +8,9 @@ var app = (function(document, $) {
 		},
 		_init = function() {
 			$(document).foundation();
+            // needed to use joyride
+            // doc: http://foundation.zurb.com/docs/components/joyride.html
+            $(document).foundation('joyride', 'start');
 			_userAgentInit();
 		};
 
