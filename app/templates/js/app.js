@@ -10,7 +10,9 @@ var app = (function(document, $) {
 			$(document).foundation();
             // needed to use joyride
             // doc: http://foundation.zurb.com/docs/components/joyride.html
-            $(document).foundation('joyride', 'start');
+            $(document).on("click", "#start-jr", function(){
+                $(document).foundation('joyride', 'start');
+            });
 			_userAgentInit();
 		};
 
