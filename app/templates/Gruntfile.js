@@ -172,7 +172,6 @@ module.exports = function(grunt) {
 					'modernizr',<% if (fontAwesome) { %>
 					'font-awesome',<% } %>
 					'jquery-placeholder',
-					'jquery.cookie',
 					'foundation'
 				]
 			}
