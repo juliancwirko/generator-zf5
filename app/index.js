@@ -64,7 +64,7 @@ var Zf5Generator = yeoman.generators.Base.extend({
 		var prompts = {
 			type: 'confirm',
 			name: 'jade',
-			message: 'Would you like to use Jade? (templating engine)',
+			message: 'Would you like to use Jade? (templating engine) [experimental]',
 			default: false
 		};
 
