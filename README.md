@@ -6,10 +6,8 @@
 
 **Default option here will be Sass with Libsass (for now). But you can choose Ruby version on startup.**
 
-Run Ruby version with Compass on Sass 3.3.
-
-From Foundation 5.4.7:
-"Foundation is now compatible libsass 3.0. Libsass is now closer to Sass 3.3 compatibility."
+From Foundation 5.5.0:
+"Foundation is now compatible with Sass 3.4! Note: this removes Sass 3.2 compatability."
 [Foundation 5 Changelog](http://foundation.zurb.com/docs/changelog.html)
 
 

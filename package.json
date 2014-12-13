@@ -1,6 +1,6 @@
 {
   "name": "generator-zf5",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "Yeoman generator for Zurb Foundation 5",
   "license": "MIT",
   "main": "app/index.js",

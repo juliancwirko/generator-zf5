@@ -1,8 +1,14 @@
+#### 0.9.5 (13.12.2014)
+
+- Foundation 5.5.0 adjustments
+
 #### 0.9.4 (11.12.2014)
+
 - Foundation Kitchen Sink added
 - bump deps
 
 #### 0.9.3 (28.10.2014)
+
 - Foundation 5.4.7 adjustments
 - Foundation works with Libsass 3.0 and Compass 1.0.1 + Sass 3.3 (!!!)
 
