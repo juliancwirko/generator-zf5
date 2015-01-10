@@ -2,6 +2,9 @@
 
 [Yeoman](http://yeoman.io) generator for [Zurb Foundation 5](http://foundation.zurb.com/).
 
+### Basics (blog post)
+[Foundation 5 and Yeoman generator-zf5](http://julian.io/foundation-5-and-yeoman/)
+
 ### Important note:
 
 **Default option here will be Sass with Libsass (for now). But you can choose Ruby version on startup.**
