@@ -1,3 +1,7 @@
+#### 0.9.6 (31.01.2014)
+
+- Foundation 5.5.1 adjustments
+
 #### 0.9.5 (13.12.2014)
 
 - Foundation 5.5.0 adjustments
