@@ -1,3 +1,9 @@
+#### 0.9.7 (21.02.2014)
+
+- node-sass 2.0.1
+- grunt-sass 0.18.0
+- other versions bump
+
 #### 0.9.6 (04.02.2014)
 
 - Foundation 5.5.1 adjustments

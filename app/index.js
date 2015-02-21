@@ -47,7 +47,7 @@ var Zf5Generator = yeoman.generators.Base.extend({
 		var prompts = {
 			type: 'confirm',
 			name: 'compass',
-			message: 'Would you like to use Scss (with Compass)? (default: Scss with Libsass)',
+			message: 'Would you like to use Scss with Compass? (default: Scss with Libsass)',
 			default: false
 		};
 
