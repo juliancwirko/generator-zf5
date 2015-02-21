@@ -14,8 +14,8 @@
   },
   "devDependencies": {
     "load-grunt-tasks": "~3.1.0",<% if (!compass) { %>
-    "node-sass": "~1.2.3",
-    "grunt-sass": "~0.17.0",<% } else { %>
+    "node-sass": "~2.0.1",
+    "grunt-sass": "~0.18.0",<% } else { %>
     "grunt-contrib-sass": "~0.8.1",<% } %>
     "grunt": "~0.4.5",<% if (jade) { %>
     "grunt-contrib-jade": "~0.14.1",<% } %>
