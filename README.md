@@ -9,11 +9,6 @@
 
 **Default option here will be Sass with Libsass (for now). But you can choose Ruby version on startup.**
 
-From Foundation 5.5.0:
-"Foundation is now compatible with Sass 3.4! Note: this removes Sass 3.2 compatability."
-[Foundation 5 Changelog](http://foundation.zurb.com/docs/changelog.html)
-
-
 [![NPM](https://nodei.co/npm/generator-zf5.png?downloads=true)](https://nodei.co/npm/generator-zf5/)
 
 [![NPM](https://nodei.co/npm-dl/generator-zf5.png?height=2)](https://nodei.co/npm/generator-zf5/)

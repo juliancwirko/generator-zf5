@@ -1,3 +1,8 @@
+#### 0.9.7 (01.05.2015)
+
+- Foundation 5.5.2 adjustments
+- versions bump
+
 #### 0.9.7 (21.02.2015)
 
 - node-sass 2.0.1
