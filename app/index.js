@@ -3,6 +3,7 @@ var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
+var mkdirp = require('mkdirp');
 
 var Zf5Generator = yeoman.generators.Base.extend({
 
@@ -76,8 +77,8 @@ var Zf5Generator = yeoman.generators.Base.extend({
 	},
 
 	app: function () {
-		this.mkdir('dist');
-		this.mkdir('app');
+		mkdirp('dist');
+		mkdirp('app');
 		this.template('bower.json', 'bower.json');
 		this.template('package.json', 'package.json');
 		this.template('Gruntfile.js', 'Gruntfile.js');
@@ -92,17 +93,21 @@ var Zf5Generator = yeoman.generators.Base.extend({
 		} else {
 			this.template('index.html', 'app/index.html');
 		}
-		this.mkdir('app/fonts');
-		this.mkdir('app/images');
-		this.mkdir('app/js');
-		this.mkdir('app/css');
-		this.mkdir('app/scss');
+		mkdirp('app/fonts');
+		mkdirp('app/images');
+		mkdirp('app/js');
+		mkdirp('app/css');
+		mkdirp('app/scss');
 		this.copy('scss/app.scss', 'app/scss/app.scss');
 		this.copy('scss/_settings.scss', 'app/scss/_settings.scss');
 		this.template('scss/_appstyles.scss', 'app/scss/_appstyles.scss');
 		this.copy('js/app.js', 'app/js/app.js');
 		this.copy('css/template_override.css', 'app/css/app_override.css');
-	}
+	},
+
+    install: function () {
+        this.installDependencies();
+    }
 
 });
 
