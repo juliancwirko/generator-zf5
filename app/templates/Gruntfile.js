@@ -34,6 +34,16 @@ module.exports = function(grunt) {
 				}
 			}<% } %>
 		},
+		
+		<% if (autoprefixer) { %>
+		autoprefixer: {
+			options: {
+		        browsers: ['last 2 version', 'ie 8', 'ie 9']
+	      		},
+		      all: {
+		        src: ['<%= app %>/css/app.css']
+			}
+		},<% } %>
 
 		<% if (jade) { %>
 		jade: {
@@ -126,7 +136,7 @@ module.exports = function(grunt) {
 			},
 			sass: {
 				files: '<%%= app %>/scss/**/*.scss',
-				tasks: ['sass']
+				tasks: ['sass'	<% if (autoprefixer) { %> ,'autoprefixer'  <% } %>]
 			},<% if (jade) { %>
 			jade: {
 				files: '<%%= app %>/**/*.jade',
@@ -181,14 +191,15 @@ module.exports = function(grunt) {
 
 	<% if (jade) { %>grunt.registerTask('compile-jade', ['jade']);<% } %>
 	grunt.registerTask('compile-sass', ['sass']);
+	<% if (autoprefixer) { %>grunt.loadNpmTasks('grunt-autoprefixer');<% } %>
 	grunt.registerTask('bower-install', ['wiredep']);
 	<% if (jade) { %>
 	grunt.registerTask('default', ['compile-jade', 'compile-sass', 'bower-install', 'connect:app', 'watch']);<% } else { %>
-	grunt.registerTask('default', ['compile-sass', 'bower-install', 'connect:app', 'watch']);<% } %>
+	grunt.registerTask('default', ['compile-sass'<% if (autoprefixer) { %> ,'autoprefixer'<% } %>, 'bower-install', 'connect:app', 'watch']);<% } %>
 	grunt.registerTask('validate-js', ['jshint']);
 	grunt.registerTask('server-dist', ['connect:dist']);
 	<% if (jade) { %>
 	grunt.registerTask('publish', ['compile-jade', 'compile-sass', 'clean:dist', 'validate-js', 'useminPrepare', 'copy:dist', 'newer:imagemin', 'concat', 'cssmin', 'uglify', 'usemin']);<% } else { %>
-	grunt.registerTask('publish', ['compile-sass', 'clean:dist', 'validate-js', 'useminPrepare', 'copy:dist', 'newer:imagemin', 'concat', 'cssmin', 'uglify', 'usemin']);<% } %>
+	grunt.registerTask('publish', ['compile-sass'<% if (autoprefixer) { %> ,'autoprefixer'<% } %>, 'clean:dist', 'validate-js', 'useminPrepare', 'copy:dist', 'newer:imagemin', 'concat', 'cssmin', 'uglify', 'usemin']);<% } %>
 
 };
