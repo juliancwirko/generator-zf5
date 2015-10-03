@@ -1,6 +1,6 @@
 {
   "name": "generator-zf5",
-  "version": "0.9.10",
+  "version": "0.9.11",
   "description": "Yeoman generator for Zurb Foundation 5",
   "license": "MIT",
   "main": "app/index.js",
@@ -22,17 +22,17 @@
     "app"
   ],
   "keywords": [
-    "yeoman-generator", "foundation5", "zurb", "foundation"
+    "yeoman-generator", "foundation5", "zurb", "foundation", "sass", "scss"
   ],
   "dependencies": {
-    "yeoman-generator": "~0.20.2",
-    "chalk": "~1.1.0",
+    "yeoman-generator": "~0.20.3",
+    "chalk": "~1.1.1",
     "mkdirp": "~0.5.1"
   },
   "devDependencies": {
     "mocha": "*"
   },
   "peerDependencies": {
-    "yo": "~1.4.7"
+    "yo": "~1.4.8"
   }
 }

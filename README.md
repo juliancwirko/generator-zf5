@@ -2,7 +2,7 @@
 
 [Yeoman](http://yeoman.io) generator for [Zurb Foundation 5](http://foundation.zurb.com/).
 
-### Basics (blog post)
+### Learn more about it (blog post):
 [Foundation 5 and Yeoman generator-zf5](http://julian.io/foundation-5-and-yeoman/)
 
 ### Important note:
@@ -177,8 +177,6 @@ If you'd like to get to know Yeoman better and meet some of his friends, [Grunt]
 ### License
 
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
-
-Maybe someone (English speaker) would like to prepare tutorial for zf5 generator? I will be very thankful :)
 
 ### Contact
 
