@@ -1,3 +1,7 @@
+#### 0.10.0 (04.10.2015)
+
+- Modernizr fix - now there is a custom build based on [grunt-modernizr](https://github.com/modernizr/grunt-modernizr) task
+
 #### 0.9.11 (03.10.2015)
 
 - updates

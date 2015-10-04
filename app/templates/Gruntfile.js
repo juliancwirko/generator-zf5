@@ -5,190 +5,199 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
 
-	grunt.initConfig({
-		pkg: grunt.file.readJSON('package.json'),
-		app: 'app',
-		dist: 'dist',
+    grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+        app: 'app',
+        dist: 'dist',
 
-		sass: {<% if (!compass) { %>
-			options: {
-				includePaths: ['<%%= app %>/bower_components/foundation/scss']
-			},
-			dist: {
-				options: {
-					outputStyle: 'extended'
-				},
-				files: {
-					'<%%= app %>/css/app.css': '<%%= app %>/scss/app.scss'
-				}
-			}<% } else { %>
-			dist: {
-				options: {
-					style: 'expanded', // expanded or nested or compact or compressed
-					loadPath: '<%%= app %>/bower_components/foundation/scss',
-					compass: true,
-					quiet: true
-				},
-				files: {
-					'<%%= app %>/css/app.css': '<%%= app %>/scss/app.scss'
-				}
-			}<% } %>
-		},
+        sass: {<% if (!compass) { %>
+            options: {
+                includePaths: ['<%%= app %>/bower_components/foundation/scss']
+            },
+            dist: {
+                options: {
+                    outputStyle: 'extended'
+                },
+                files: {
+                    '<%%= app %>/css/app.css': '<%%= app %>/scss/app.scss'
+                }
+            }<% } else { %>
+            dist: {
+                options: {
+                    style: 'expanded', // expanded or nested or compact or compressed
+                    loadPath: '<%%= app %>/bower_components/foundation/scss',
+                    compass: true,
+                    quiet: true
+                },
+                files: {
+                    '<%%= app %>/css/app.css': '<%%= app %>/scss/app.scss'
+                }
+            }<% } %>
+        },
 
-		<% if (jade) { %>
-		jade: {
-			compile: {
-				options: {
-					pretty: true,
-					data: {
-						debug: false
-					}
-				},
-				files: [{
-					expand: true,
-					cwd: '<%%= app %>/',
-					src: ['**/*.jade', '!**/header.jade', '!**/footer.jade'],
-					ext: '.html',
-					dest: '<%%= app %>/'
-				}]
-			}
-		},<% } %>
+        <% if (jade) { %>
+        jade: {
+            compile: {
+                options: {
+                    pretty: true,
+                    data: {
+                        debug: false
+                    }
+                },
+                files: [{
+                    expand: true,
+                    cwd: '<%%= app %>/',
+                    src: ['**/*.jade', '!**/header.jade', '!**/footer.jade'],
+                    ext: '.html',
+                    dest: '<%%= app %>/'
+                }]
+            }
+        },<% } %>
 
-		jshint: {
-			options: {
-				jshintrc: '.jshintrc'
-			},
-			all: [
-				'Gruntfile.js',
-				'<%%= app %>/js/**/*.js'
-			]
-		},
+        jshint: {
+            options: {
+                jshintrc: '.jshintrc',
+                ignores: [
+                    '<%%= app %>/js/modernizr-custom.js'
+                ]
+            },
+            all: [
+                'Gruntfile.js',
+                '<%%= app %>/js/**/*.js'
+            ]
+        },
 
-		clean: {
-			dist: {
-				src: ['<%%= dist %>/*']
-			},
-		},
-		copy: {
-			dist: {
-				files: [{
-					expand: true,
-					cwd:'<%%= app %>/',
-					src: ['fonts/**', '**/*.html', '!**/*.scss', '!bower_components/**'],
-					dest: '<%%= dist %>/'
-				}<% if (fontAwesome) { %> , {
-					expand: true,
-					flatten: true,
-					src: ['<%%= app %>/bower_components/font-awesome/fonts/**'],
-					dest: '<%%= dist %>/fonts/',
-					filter: 'isFile'
-				} <% } %>]
-			},
-		},
+        clean: {
+            dist: {
+                src: ['<%%= dist %>/*']
+            },
+        },
+        copy: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd:'<%%= app %>/',
+                    src: ['fonts/**', '**/*.html', '!**/*.scss', '!bower_components/**'],
+                    dest: '<%%= dist %>/'
+                }<% if (fontAwesome) { %> , {
+                    expand: true,
+                    flatten: true,
+                    src: ['<%%= app %>/bower_components/font-awesome/fonts/**'],
+                    dest: '<%%= dist %>/fonts/',
+                    filter: 'isFile'
+                } <% } %>]
+            },
+        },
 
-		imagemin: {
-			target: {
-				files: [{
-					expand: true,
-					cwd: '<%%= app %>/images/',
-					src: ['**/*.{jpg,gif,svg,jpeg,png}'],
-					dest: '<%%= dist %>/images/'
-				}]
-			}
-		},
+        imagemin: {
+            target: {
+                files: [{
+                    expand: true,
+                    cwd: '<%%= app %>/images/',
+                    src: ['**/*.{jpg,gif,svg,jpeg,png}'],
+                    dest: '<%%= dist %>/images/'
+                }]
+            }
+        },
 
-		uglify: {
-			options: {
-				preserveComments: 'some',
-				mangle: false
-			}
-		},
+        uglify: {
+            options: {
+                preserveComments: 'some',
+                mangle: false
+            }
+        },
 
-		useminPrepare: {
-			html: ['<%%= app %>/index.html'],
-			options: {
-				dest: '<%%= dist %>'
-			}
-		},
+        useminPrepare: {
+            html: ['<%%= app %>/index.html'],
+            options: {
+                dest: '<%%= dist %>'
+            }
+        },
 
-		usemin: {
-			html: ['<%%= dist %>/**/*.html', '!<%%= app %>/bower_components/**'],
-			css: ['<%%= dist %>/css/**/*.css'],
-			options: {
-				dirs: ['<%%= dist %>']
-			}
-		},
+        usemin: {
+            html: ['<%%= dist %>/**/*.html', '!<%%= app %>/bower_components/**'],
+            css: ['<%%= dist %>/css/**/*.css'],
+            options: {
+                dirs: ['<%%= dist %>']
+            }
+        },
 
-		watch: {
-			grunt: {
-				files: ['Gruntfile.js'],
-				tasks: ['sass']
-			},
-			sass: {
-				files: '<%%= app %>/scss/**/*.scss',
-				tasks: ['sass']
-			},<% if (jade) { %>
-			jade: {
-				files: '<%%= app %>/**/*.jade',
-				tasks: ['jade']
-			},<% } %>
-			livereload: {
-				files: ['<%%= app %>/**/*.html', '!<%%= app %>/bower_components/**', '<%%= app %>/js/**/*.js', '<%%= app %>/css/**/*.css', '<%%= app %>/images/**/*.{jpg,gif,svg,jpeg,png}'],
-				options: {
-					livereload: true
-				}
-			}
-		},
+        watch: {
+            grunt: {
+                files: ['Gruntfile.js'],
+                tasks: ['sass']
+            },
+            sass: {
+                files: '<%%= app %>/scss/**/*.scss',
+                tasks: ['sass']
+            },<% if (jade) { %>
+            jade: {
+                files: '<%%= app %>/**/*.jade',
+                tasks: ['jade']
+            },<% } %>
+            livereload: {
+                files: ['<%%= app %>/**/*.html', '!<%%= app %>/bower_components/**', '<%%= app %>/js/**/*.js', '<%%= app %>/css/**/*.css', '<%%= app %>/images/**/*.{jpg,gif,svg,jpeg,png}'],
+                options: {
+                    livereload: true
+                }
+            }
+        },
 
-		connect: {
-			app: {
-				options: {
-					port: 9000,
-					base: '<%%= app %>/',
-					open: true,
-					livereload: true,
-					hostname: '127.0.0.1'
-				}
-			},
-			dist: {
-				options: {
-					port: 9001,
-					base: '<%%= dist %>/',
-					open: true,
-					keepalive: true,
-					livereload: false,
-					hostname: '127.0.0.1'
-				}
-			}
-		},
+        connect: {
+            app: {
+                options: {
+                    port: 9000,
+                    base: '<%%= app %>/',
+                    open: true,
+                    livereload: true,
+                    hostname: '127.0.0.1'
+                }
+            },
+            dist: {
+                options: {
+                    port: 9001,
+                    base: '<%%= dist %>/',
+                    open: true,
+                    keepalive: true,
+                    livereload: false,
+                    hostname: '127.0.0.1'
+                }
+            }
+        },
 
-		wiredep: {
-			target: {
-				src: [<% if (jade) { %>
-					'<%%= app %>/**/*.jade'<% } else { %>
-					'<%%= app %>/**/*.html'<% } %>
-				],
-				exclude: [
-					'modernizr',<% if (fontAwesome) { %>
-					'font-awesome',<% } %>
-					'jquery-placeholder',
-					'foundation'
-				]
-			}
-		}
+        modernizr: {
+            dist: {
+                'dest': '<%%= app %>/js/modernizr-custom.js',
+            }
+        },
 
-	});
+        wiredep: {
+            target: {
+                src: [<% if (jade) { %>
+                    '<%%= app %>/**/*.jade'<% } else { %>
+                    '<%%= app %>/**/*.html'<% } %>
+                ],
+                exclude: [
+                    'modernizr',<% if (fontAwesome) { %>
+                    'font-awesome',<% } %>
+                    'jquery-placeholder',
+                    'foundation'
+                ]
+            }
+        }
 
-	<% if (jade) { %>grunt.registerTask('compile-jade', ['jade']);<% } %>
-	grunt.registerTask('compile-sass', ['sass']);
-	grunt.registerTask('bower-install', ['wiredep']);
-	<% if (jade) { %>
-	grunt.registerTask('default', ['compile-jade', 'compile-sass', 'bower-install', 'connect:app', 'watch']);<% } else { %>
-	grunt.registerTask('default', ['compile-sass', 'bower-install', 'connect:app', 'watch']);<% } %>
-	grunt.registerTask('validate-js', ['jshint']);
-	grunt.registerTask('server-dist', ['connect:dist']);
-	<% if (jade) { %>
-	grunt.registerTask('publish', ['compile-jade', 'compile-sass', 'clean:dist', 'validate-js', 'useminPrepare', 'copy:dist', 'newer:imagemin', 'concat', 'cssmin', 'uglify', 'usemin']);<% } else { %>
-	grunt.registerTask('publish', ['compile-sass', 'clean:dist', 'validate-js', 'useminPrepare', 'copy:dist', 'newer:imagemin', 'concat', 'cssmin', 'uglify', 'usemin']);<% } %>
+    });
+
+    <% if (jade) { %>grunt.registerTask('compile-jade', ['jade']);<% } %>
+    grunt.registerTask('compile-sass', ['sass']);
+    grunt.registerTask('bower-install', ['wiredep']);
+    <% if (jade) { %>
+    grunt.registerTask('default', ['compile-jade', 'compile-sass', 'bower-install', 'modernizr:dist', 'connect:app', 'watch']);<% } else { %>
+    grunt.registerTask('default', ['compile-sass', 'bower-install', 'modernizr:dist', 'connect:app', 'watch']);<% } %>
+    grunt.registerTask('validate-js', ['jshint']);
+    grunt.registerTask('server-dist', ['connect:dist']);
+    <% if (jade) { %>
+    grunt.registerTask('publish', ['compile-jade', 'compile-sass', 'modernizr:dist', 'clean:dist', 'validate-js', 'useminPrepare', 'copy:dist', 'newer:imagemin', 'concat', 'cssmin', 'uglify', 'usemin']);<% } else { %>
+    grunt.registerTask('publish', ['compile-sass', 'modernizr:dist', 'clean:dist', 'validate-js', 'useminPrepare', 'copy:dist', 'newer:imagemin', 'concat', 'cssmin', 'uglify', 'usemin']);<% } %>
 
 };

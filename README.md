@@ -20,6 +20,7 @@
 * Server with LiveReload (127.0.0.1:9000)
 * Bower install
 * JSHint
+* Custom Modernizr build based on your features usage
 * Font Awesome (option)
 
 ## Getting Started

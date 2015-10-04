@@ -30,6 +30,7 @@
     "grunt-wiredep": "~2.0.0",
     "grunt-usemin": "~3.1.1",
     "grunt-contrib-imagemin": "0.9.4",
-    "grunt-newer": "~1.1.1"
+    "grunt-newer": "~1.1.1",
+    "grunt-modernizr": "~1.0.0"
   }
 }
