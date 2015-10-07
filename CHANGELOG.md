@@ -3,7 +3,7 @@
 - Jade was removed
 - grunt-modernizr was removed
 - autoprefixer was added
-- Foundation was updated to newest v5.3.3
+- Foundation was updated to newest v5.5.3
 
 #### 0.10.0 (04.10.2015)
 
