@@ -59,23 +59,6 @@ var Zf5Generator = yeoman.generators.Base.extend({
 		}.bind(this));
 	},
 
-	askForJade: function () {
-		var cb = this.async();
-
-		var prompts = {
-			type: 'confirm',
-			name: 'jade',
-			message: 'Would you like to use Jade? (templating engine) [experimental]',
-			default: false
-		};
-
-		this.prompt(prompts, function (props) {
-			this.jade = props.jade;
-
-			cb();
-		}.bind(this));
-	},
-
 	app: function () {
 		mkdirp('dist');
 		mkdirp('app');
@@ -86,13 +69,7 @@ var Zf5Generator = yeoman.generators.Base.extend({
 		this.copy('.bowerrc', '.bowerrc');
 		this.copy('gitignore', '.gitignore');
 		this.copy('README.md', 'README.md');
-		if (this.jade) {
-			this.template('jade/index.jade', 'app/index.jade');
-			this.template('jade/header.jade', 'app/header.jade');
-			this.copy('jade/footer.jade', 'app/footer.jade');
-		} else {
-			this.template('index.html', 'app/index.html');
-		}
+		this.template('index.html', 'app/index.html');
 		mkdirp('app/fonts');
 		mkdirp('app/images');
 		mkdirp('app/js');

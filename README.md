@@ -15,7 +15,7 @@
 
 ## Yo Foundation 5!
 * Sass compiling
-* Jade templating engine (option)
+* autoprefixer (app.css file)
 * Publishing to dist directory
 * Server with LiveReload (127.0.0.1:9000)
 * Bower install
@@ -44,12 +44,12 @@ $ yo zf5
 ## Grunt tasks:
 
 run project
-(compile Jade, compile Sass, bower install, livereload (server on 127.0.0.1:9000), watch)
+(compile Sass, bower install, livereload (server on 127.0.0.1:9000), watch)
 ```
 $ grunt
 ```
 publishing project (into dist directory)
-(compile Jade, compile Sass, validate-js, copy, concatenation, minifications)
+(compile Sass, validate-js, copy, concatenation, minifications)
 ```
 $ grunt publish
 ```
@@ -68,13 +68,9 @@ $ grunt validate-js
 ```
 $ grunt bower-install
 ```
-..for compiling Sass files
+..for compiling Sass files + autoprefixer on app.css file
 ```
 $ grunt compile-sass
-```
-..for compiling Jade files
-```
-$ grunt compile-jade
 ```
 
 ### Ruby Sass with Compass or Node Sass (Libsass)
@@ -85,35 +81,11 @@ You don't need to use the config.rb file, all is configured in Gruntfile.js (Sas
 
 Ruby Sass config info: <a href="https://github.com/gruntjs/grunt-contrib-sass">https://github.com/gruntjs/grunt-contrib-sass</a>
 
-You can also use Libsass version (default) which is very fast, but it is compatible with only older Sass 3.3. For Foundation it is ok. And I think soon it will be improved.
+You can also use Libsass version (default) which is very fast.
 
 Node Sass config info: <a href="https://github.com/sindresorhus/grunt-sass">https://github.com/sindresorhus/grunt-sass</a>
 
 Please test this and send issues if any.
-
-### Jade templating engine (early stage.. PR are welcomed)
-
-From version 0.8.0 you can use Jade templating engine (option). It gives you clean and simple html syntax and (whats important) it allows you to use partials includes like header or footer. Example:
-````
-html(class="no-js", lang="en")
-    include partials/header
-    body
-        div.row
-            div(class="small-12 columns panel radius")
-                h1 Yo Foundation 5!
-                h2(class="text-right")
-                    a(href="https://github.com/juliancwirko/generator-zf5")
-                        i(class="fa fa-twitter")
-        include partials/footer
-````
-##### Problems to solve:
-
-- jade-usemin
-- bower install (wiredep) with Jade
-- paths etc...
-- all as the Jade option in Yeoman prompts convention..
-
-More about Jade: [http://jade-lang.com/](http://jade-lang.com/)
 
 ### LiveReload
 
@@ -165,7 +137,6 @@ you can add new ones
 - always verify what 'grunt bower-install' injects
 - You must look aut where you initialize your project. It is better to not initialize your projec in a subfolder next to .yo-rc.json because your files will land here and not in your subfolder from where you are initializing project
 - if you use Compass.. place your mixin includes after Foundation scss partials - [more info](https://github.com/juliancwirko/generator-zf5/issues/18) (by default they are in _appstyles.scss)
-- if you use Jade templating remember to place at least header.jade and footer.jade in main app folder - this is needed for bower install injections
 
 You can test it and tell me please if something is not working.
 

@@ -35,31 +35,20 @@ module.exports = function(grunt) {
             }<% } %>
         },
 
-        <% if (jade) { %>
-        jade: {
-            compile: {
-                options: {
-                    pretty: true,
-                    data: {
-                        debug: false
-                    }
-                },
-                files: [{
-                    expand: true,
-                    cwd: '<%%= app %>/',
-                    src: ['**/*.jade', '!**/header.jade', '!**/footer.jade'],
-                    ext: '.html',
-                    dest: '<%%= app %>/'
-                }]
+        postcss: {
+            options: {
+                processors: [
+                    require('autoprefixer')({browsers: 'last 2 versions'})
+                ]
+            },
+            dist: {
+                src: '<%%= app %>/css/app.css'
             }
-        },<% } %>
+        },
 
         jshint: {
             options: {
-                jshintrc: '.jshintrc',
-                ignores: [
-                    '<%%= app %>/js/modernizr-custom.js'
-                ]
+                jshintrc: '.jshintrc'
             },
             all: [
                 'Gruntfile.js',
@@ -125,16 +114,12 @@ module.exports = function(grunt) {
         watch: {
             grunt: {
                 files: ['Gruntfile.js'],
-                tasks: ['sass']
+                tasks: ['sass', 'postcss']
             },
             sass: {
                 files: '<%%= app %>/scss/**/*.scss',
-                tasks: ['sass']
-            },<% if (jade) { %>
-            jade: {
-                files: '<%%= app %>/**/*.jade',
-                tasks: ['jade']
-            },<% } %>
+                tasks: ['sass', 'postcss']
+            },
             livereload: {
                 files: ['<%%= app %>/**/*.html', '!<%%= app %>/bower_components/**', '<%%= app %>/js/**/*.js', '<%%= app %>/css/**/*.css', '<%%= app %>/images/**/*.{jpg,gif,svg,jpeg,png}'],
                 options: {
@@ -165,17 +150,10 @@ module.exports = function(grunt) {
             }
         },
 
-        modernizr: {
-            dist: {
-                'dest': '<%%= app %>/js/modernizr-custom.js',
-            }
-        },
-
         wiredep: {
             target: {
-                src: [<% if (jade) { %>
-                    '<%%= app %>/**/*.jade'<% } else { %>
-                    '<%%= app %>/**/*.html'<% } %>
+                src: [
+                    '<%%= app %>/**/*.html'
                 ],
                 exclude: [
                     'modernizr',<% if (fontAwesome) { %>
@@ -188,16 +166,11 @@ module.exports = function(grunt) {
 
     });
 
-    <% if (jade) { %>grunt.registerTask('compile-jade', ['jade']);<% } %>
-    grunt.registerTask('compile-sass', ['sass']);
+    grunt.registerTask('compile-sass', ['sass', 'postcss']);
     grunt.registerTask('bower-install', ['wiredep']);
-    <% if (jade) { %>
-    grunt.registerTask('default', ['compile-jade', 'compile-sass', 'bower-install', 'modernizr:dist', 'connect:app', 'watch']);<% } else { %>
-    grunt.registerTask('default', ['compile-sass', 'bower-install', 'modernizr:dist', 'connect:app', 'watch']);<% } %>
+    grunt.registerTask('default', ['compile-sass', 'bower-install', 'connect:app', 'watch']);
     grunt.registerTask('validate-js', ['jshint']);
     grunt.registerTask('server-dist', ['connect:dist']);
-    <% if (jade) { %>
-    grunt.registerTask('publish', ['compile-jade', 'compile-sass', 'modernizr:dist', 'clean:dist', 'validate-js', 'useminPrepare', 'copy:dist', 'newer:imagemin', 'concat', 'cssmin', 'uglify', 'usemin']);<% } else { %>
-    grunt.registerTask('publish', ['compile-sass', 'modernizr:dist', 'clean:dist', 'validate-js', 'useminPrepare', 'copy:dist', 'newer:imagemin', 'concat', 'cssmin', 'uglify', 'usemin']);<% } %>
+    grunt.registerTask('publish', ['compile-sass', 'clean:dist', 'validate-js', 'useminPrepare', 'copy:dist', 'newer:imagemin', 'concat', 'cssmin', 'uglify', 'usemin']);
 
 };
