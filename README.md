@@ -2,8 +2,9 @@
 
 [Yeoman](http://yeoman.io) generator for [Zurb Foundation 5](http://foundation.zurb.com/).
 
-**There is Foundation for Sites 6** go and check it: [foundation.zurb.com](http://foundation.zurb.com/)
+**This project is not maintained anymore. There is Foundation for Sites 6** go and check it: [foundation.zurb.com](http://foundation.zurb.com/)
 Also check out advanced starter project based on Gulp including Handlebars templates, UnCSS and many more: [Foundation 6 Starter docs](http://foundation.zurb.com/sites/docs/starter-projects.html#zurb-template )
+Also check out [Getting Started with Foundation 6’s CLI Tools](https://www.sitepoint.com/getting-started-with-foundation-6s-cli-tools/). Thanks!
 
 ### Learn more about it (blog post):
 [Foundation 5 and Yeoman generator-zf5](http://julian.io/foundation-5-and-yeoman/)
